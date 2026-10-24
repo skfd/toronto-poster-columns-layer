@@ -347,6 +347,17 @@ def test_a_second_osm_column_beside_a_matched_one_is_a_duplicate():
     assert counts["duplicate"] == 1 and counts["osm_only"] == 0
 
 
+def test_a_far_point_with_a_duplicate_is_counted_once():
+    # Duplicate wins the row, and the header counts rows: on the first run a
+    # shelter board 23 m from one board and 26 m from another was counted as
+    # both far and duplicate, so the header summed to one more than the table.
+    gaps, counts, _ = _run([_city("SH-1", kind="shelter_board")],
+                           [_node(1, north_m=23), _node(2, north_m=-26)])
+    assert gaps == {("SH-1", "duplicate")}
+    assert (counts["far"], counts["duplicate"]) == (0, 1)
+    assert counts["by_kind"]["shelter_board"]["far"] == 0
+
+
 def test_an_unpaired_billboard_is_neither_duplicate_nor_osm_only():
     # Toronto has hundreds of billboards and history plaques. One beside a
     # column already answered for, or one in the middle of nowhere, is just

@@ -357,9 +357,6 @@ def _match(city, osm):
             counts["matched"] += 1
             kind["matched"] += 1
             status = None
-        if status in ("missing", "far"):
-            counts[status] += 1
-            kind[status] += 1
         if i in duplicates:
             other = osm[duplicates[i][0]]
             extra["other_url"] = _osm_url(other)
@@ -369,6 +366,9 @@ def _match(city, osm):
             kind["duplicate"] += 1
         if status is None:
             continue  # an OSM feature is right here
+        if status in ("missing", "far"):
+            counts[status] += 1
+            kind[status] += 1
         gaps.append(_gap_feature(c, status, match, d, extra))
 
     for j, d in osm_only:
