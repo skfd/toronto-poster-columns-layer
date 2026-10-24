@@ -22,7 +22,7 @@ data:
   the two files are merged into one layer with a `kind` (`column` or
   `shelter_board`). A file under its floor (750 / 1,500) stops the run;
 - **compare** accepts two OSM tagging families and reports position only;
-- **raster** draws two colours, and rings for points the City lists as
+- **raster** draws two shapes in two colours, hollow for points the City lists as
   temporarily removed.
 
 It was built because only 3 of the City's columns were tagged
@@ -37,9 +37,10 @@ of the columns than that: see the first run below.)
 - **Vector tiles** (MVT, z12-19) &mdash; interactive in iD; click a point to
   read its `kind`, `id`, `site_id`, `asset_type`, `city_status`, `address`,
   `fronting` and `from_street`.
-- **Raster tiles** (PNG, z15-17) &mdash; an orange dot per poster column and a
-  blue one per shelter board, white edged, 5 px in radius at z17. A point the
-  City lists as *Temporarily Removed* (94 columns, 28 boards) is a ring.
+- **Raster tiles** (PNG, z15-17) &mdash; an orange circle per poster column
+  and a blue square per shelter board, white edged, 5 px in radius at z17. A
+  point the City lists as *Temporarily Removed* (94 columns, 28 boards) is
+  hollow.
 - A **landing page** with copy-paste "add this layer" instructions for both
   editors, and the postering-rules caveat below.
 - A **gap-review page** (`/gaps/`) on an interactive map and a filterable

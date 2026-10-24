@@ -147,4 +147,4 @@ footer {
   margin-left: .25rem;
 }
 .key.column { background: #e8590c; }
-.key.shelter_board { background: #1c7ed6; }
+.key.shelter_board { background: #1c7ed6; border-radius: 0; }

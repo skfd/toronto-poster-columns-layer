@@ -49,6 +49,18 @@ def test_a_shelter_board_gets_its_own_colour():
     print("test_a_shelter_board_gets_its_own_colour: OK")
 
 
+def test_columns_are_round_and_shelter_boards_square():
+    # Shape, not only colour, tells the kinds apart: the corner of the
+    # marker's box is filled for a square and left empty by a circle.
+    r = DOT_RADIUS[17]
+    corner = (50 + r - 1, 50 + r - 1)
+    board = _render_tile(0, 0, [(50, 50, "shelter_board", False)], r)
+    column = _render_tile(0, 0, [(50, 50, "column", False)], r)
+    assert board.getpixel(corner)[3] == 255
+    assert column.getpixel(corner)[3] == 0
+    print("test_columns_are_round_and_shelter_boards_square: OK")
+
+
 def test_a_removed_point_is_a_ring():
     # "Temporarily Removed": the City says it belongs here, but a mapper may
     # find nothing. Hollow in the middle, coloured round the edge.
@@ -66,4 +78,5 @@ if __name__ == "__main__":
     test_a_dot_on_a_seam_is_drawn_on_both_tiles()
     test_a_tile_is_transparent_away_from_the_dots()
     test_a_shelter_board_gets_its_own_colour()
+    test_columns_are_round_and_shelter_boards_square()
     test_a_removed_point_is_a_ring()

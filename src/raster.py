@@ -2,11 +2,13 @@
 
 Pure Python -- no native dependencies, runs the same on Windows and Linux.
 
-One dot per City point, coloured by ``kind``: orange for a poster column, blue
-for a board on a transit shelter. Each dot has a white edge, so it reads over
-imagery and over OSM's own map. A point the City lists as "Temporarily
-Removed" is drawn as a ring rather than a dot: the City says it belongs there,
-but a mapper standing at the spot may well find nothing. There are no labels:
+One marker per City point, told apart by ``kind`` in both shape and colour, so
+the two read apart without relying on colour alone: an orange circle for a
+poster column (it is round), a blue square for a board on a transit shelter
+(it is flat). Each marker has a white edge, so it reads over imagery and over
+OSM's own map. A point the City lists as "Temporarily Removed" is drawn
+hollow: the City says it belongs there, but a mapper standing at the spot may
+well find nothing. There are no labels:
 the City's asset numbers are not on the structures and do not belong in OSM,
 so a label would only be something to copy that should not be copied. The dot
 grows with the zoom, and at z17 -- the zoom a mapper edits at, overzoomed
@@ -30,6 +32,7 @@ EDGE_COLOR = (255, 255, 255, 255)
 # Columns are drawn last, on top: they are the layer's main subject, and a
 # column and a shelter a few metres apart should not hide the column.
 DRAW_ORDER = ("shelter_board", "column")
+SQUARE_KINDS = ("shelter_board",)
 REMOVED = "Temporarily Removed"
 
 # Dot radius per zoom, in pixels (white edge included).
@@ -103,11 +106,12 @@ def _render_tile(tx, ty, points, radius):
         x, y = x - ox, y - oy
         color = KIND_COLORS.get(kind, KIND_COLORS["column"])
         box = (x - radius, y - radius, x + radius, y + radius)
+        shape = draw.rectangle if kind in SQUARE_KINDS else draw.ellipse
         if removed:
-            # A ring: white halo, then the colour, hollow in the middle.
-            draw.ellipse(box, fill=None, outline=EDGE_COLOR, width=1)
+            # Hollow: white halo, then the colour, empty in the middle.
+            shape(box, fill=None, outline=EDGE_COLOR, width=1)
             inner = (box[0] + 1, box[1] + 1, box[2] - 1, box[3] - 1)
-            draw.ellipse(inner, fill=None, outline=color, width=max(1, radius // 2))
+            shape(inner, fill=None, outline=color, width=max(1, radius // 2))
         else:
-            draw.ellipse(box, fill=color, outline=EDGE_COLOR, width=1)
+            shape(box, fill=color, outline=EDGE_COLOR, width=1)
     return img

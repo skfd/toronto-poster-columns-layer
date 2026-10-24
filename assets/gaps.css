@@ -132,7 +132,7 @@ body.app { margin: 0; display: flex; flex-direction: column; }
 #gap-table .osm-links { white-space: nowrap; }
 #gap-table .kind { display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; margin-right: .35rem; }
 #gap-table .kind.column { background: #e8590c; }
-#gap-table .kind.shelter_board { background: #1c7ed6; }
+#gap-table .kind.shelter_board { background: #1c7ed6; border-radius: 0; }
 #gap-table .removed { color: var(--muted); font-size: .85em; }
 .kinds { display: inline-flex; gap: .6rem; }
 
