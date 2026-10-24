@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guelph Hydrants &mdash; Reference Layer for OSM Editors</title>
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script defer src="index.js"></script>
+<script data-goatcounter="https://osm-guelph.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<main>
+
+<h1>Guelph Hydrants</h1>
+<p class="lead">
+  A reference layer of the fire hydrants published by the City of Guelph
+  &mdash; <strong>{{HYDRANT_COUNT}}</strong> municipal hydrants &mdash; ready to
+  add to the <a href="https://www.openstreetmap.org">OpenStreetMap</a> editors
+  <strong>iD</strong> and <strong>JOSM</strong> while you map.
+</p>
+<p class="meta">City data: {{DATA_DATE}} &middot; tiles rebuilt: {{BUILD_DATE}}</p>
+
+<div class="attribution">
+  <a href="{{LICENSE_URL}}">{{LICENSE_NOTICE}}</a>
+  Source: <a href="{{DATASET_PAGE}}">Hydrants</a>.
+</div>
+
+<h2>Preview</h2>
+<div id="preview-map" data-raster-url="{{RASTER_URL}}"></div>
+<p class="meta">
+  The raster layer drawn over OpenStreetMap: a red dot per City hydrant, from
+  zoom 15.
+</p>
+
+<div class="attribution">
+  <strong>Coverage vs OpenStreetMap:</strong> see which City hydrants are
+  <a href="gaps/">missing from OSM, misplaced, mapped twice, or missing their
+  type, colour or position</a> &mdash; a mapper's worklist with an interactive
+  map and table.
+</div>
+
+<h2>Two layers &mdash; which to use</h2>
+<table>
+  <tr>
+    <th>Vector layer</th>
+    <td>Interactive. Click a hydrant to read the City's fields
+        (<code>hydrant_id</code>, <code>location_id</code>, <code>model</code>,
+        <code>objectid</code>). Best in <strong>iD</strong>.</td>
+  </tr>
+  <tr>
+    <th>Raster layer</th>
+    <td>Plain dots, no labels. A readable backdrop. Best in
+        <strong>JOSM</strong>.</td>
+  </tr>
+</table>
+
+<div class="note">
+  <strong>Do not copy the City's numbers into <code>ref</code>.</strong>
+  <code>hydrant_id</code> and <code>location_id</code> are the City's asset
+  numbers; nothing on the hydrant carries them, so no mapper can check one. The
+  dot tells you where to look. What goes into OSM is what you can see:
+  <code>emergency=fire_hydrant</code>, <code>fire_hydrant:type</code>,
+  <code>colour</code> and <code>fire_hydrant:position</code>.
+</div>
+
+<h2>Add to iD</h2>
+<h3>Vector layer (interactive)</h3>
+<ol>
+  <li>Open the iD editor and press <kbd>U</kbd> for the <em>Map Data</em> panel.</li>
+  <li>Under <em>Custom Map Data</em>, open the settings and paste this URL:</li>
+</ol>
+<pre class="url">{{VECTOR_URL}}</pre>
+<p>Zoom in, then click any hydrant to see its fields in the inspector.</p>
+
+<h3>Raster layer</h3>
+<ol>
+  <li>Open the <em>Background</em> panel and choose <em>Custom</em>.</li>
+  <li>Paste this URL template:</li>
+</ol>
+<pre class="url">{{RASTER_URL}}</pre>
+
+<h2>Add to JOSM</h2>
+<h3>Raster layer (recommended for JOSM)</h3>
+<ol>
+  <li>Open <em>Preferences &rarr; Imagery</em> and click <strong>+TMS</strong>.</li>
+  <li>Paste this entry (the <code>tms[15,17]</code> prefix sets the zoom range;
+      JOSM scales it up past z17):</li>
+</ol>
+<pre class="url">tms[15,17]:{{RASTER_URL_JOSM}}</pre>
+<p>
+  Give it a name such as <em>Guelph Hydrants</em>, click OK, then enable
+  it from the <em>Imagery</em> menu. Note JOSM's placeholder is
+  <code>{zoom}</code>, not <code>{z}</code>.
+</p>
+
+<h3>Vector layer (optional)</h3>
+<p>
+  JOSM can also add the vector tiles via <em>Preferences &rarr; Imagery</em> &rarr;
+  <strong>+MVT</strong>:
+</p>
+<pre class="url">{{VECTOR_URL_JOSM}}</pre>
+
+<h2>Notes</h2>
+<ul>
+  <li>The City's layer is its own hydrants. Hydrants on private land (a campus,
+      a plaza, an industrial yard) are not in it, so an OSM hydrant with no dot
+      under it is not wrong &mdash; the gap page lists those as &ldquo;OSM
+      only&rdquo; for a look, not a fix.</li>
+  <li>The City's points are accurate: OSM hydrants placed from survey sit a
+      median 1.4&nbsp;m from them. A hydrant is verified by survey or
+      street-level imagery, not from aerial imagery.</li>
+  <li>Vector tiles are pre-rendered for z12&ndash;19; raster tiles for
+      z15&ndash;17 (the editor overzooms them further).</li>
+  <li>Tiles are refreshed weekly from the City's service.</li>
+  <li>This is a <strong>reference</strong> layer, not an import &mdash; add a
+      hydrant to OpenStreetMap when you have seen it.</li>
+</ul>
+
+<footer>
+  <a href="https://github.com/{{GITHUB_REPO}}">Project source on GitHub</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://github.com/guelph-maps">More Guelph layers</a>
+</footer>
+
+</main>
+</body>
+</html>
