@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guelph Hydrants &mdash; OSM Coverage Gaps Over Time</title>
+<title>Toronto Poster Columns &mdash; OSM Coverage Gaps Over Time</title>
 <link rel="stylesheet" href="../index.css">
 <style>
   main { max-width: 1100px; }
@@ -37,18 +37,19 @@
   table.runs td:not(:first-child):not(:last-child) { text-align: right; font-variant-numeric: tabular-nums; }
 </style>
 <script defer src="history.js"></script>
-<script data-goatcounter="https://osm-guelph.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://osm-toronto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <main>
 
 <h1>OSM coverage gaps over time</h1>
 <p class="lead">
-  How many City of Guelph hydrants are <strong>mapped</strong> in
-  OpenStreetMap, how many of those still lack their <strong>type</strong> or
-  <strong>position</strong>, and how many OSM hydrants sit nowhere near a City
-  one &mdash; one point per weekly comparison, so a mapper can see the work
-  move. The table has every count, <strong>missing</strong> included.
+  How many of the City of Toronto's poster columns and shelter poster boards
+  are <strong>mapped</strong> in OpenStreetMap, how many are mapped some
+  metres <strong>off</strong> or <strong>twice</strong>, and how many OSM
+  postering spots sit nowhere near a City one &mdash; one point per weekly
+  comparison, so a mapper can see the work move. The table has every count,
+  <strong>missing</strong> included.
 </p>
 <p class="meta">{{RUN_COUNT}} comparisons since {{FIRST_DATE}} &middot; last {{BUILD_DATE}} &middot;
   <a href="./">current gaps</a> &middot; <a href="history.jsonl">data (JSONL)</a></p>
@@ -59,17 +60,17 @@
 <p class="meta" style="margin-top:.75rem">
   Points in the shaded span are reconstructed after the fact from OSM's own
   history (an Overpass attic query for that date, compared against today's
-  City hydrants); the rest were observed by the weekly build. Counts follow
-  the City's Hydrants layer, so they move when the City adds or removes a
-  hydrant, not only when someone maps one.
+  City points); the rest were observed by the weekly build. Counts follow
+  the City's two datasets, so they move when the City adds or removes a
+  column or a board, not only when someone maps one.
 </p>
 
 <h2>Every comparison</h2>
 <table class="runs">
   <thead>
     <tr><th>Date</th><th>Missing</th><th>Far</th><th>Duplicate</th>
-        <th>No type</th><th>No colour</th><th>No position</th><th>OSM only</th>
-        <th>Matched</th><th>City hydrants</th><th>OSM hydrants</th><th>Source</th></tr>
+        <th>OSM only</th><th>Matched</th><th>City points</th>
+        <th>OSM features</th><th>Source</th></tr>
   </thead>
   <tbody>
 {{HISTORY_ROWS}}

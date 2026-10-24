@@ -135,3 +135,16 @@ footer {
   color: var(--muted);
   font-size: .9rem;
 }
+
+.key {
+  display: inline-block;
+  width: .8em;
+  height: .8em;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 1px #bbb;
+  vertical-align: -.05em;
+  margin-left: .25rem;
+}
+.key.column { background: #e8590c; }
+.key.shelter_board { background: #1c7ed6; }

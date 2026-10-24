@@ -5,19 +5,18 @@
 
   var COLORS = {
     missing: "#7048e8", far: "#c92a2a", duplicate: "#d6336c",
-    notype: "#2b8a3e", nocolour: "#e8590c", noposition: "#1c7ed6",
     osm_only: "#495057",
   };
+  var KINDS = { column: "Poster column", shelter_board: "Shelter poster board" };
   // What a mapper does about each status; shown in the popup.
   var ACTIONS = {
-    missing: "No OSM hydrant here. Add it once you have seen it.",
-    far: "The nearest OSM hydrant is some metres off. Check which point is right.",
-    duplicate: "Two OSM hydrants for one City hydrant. One is probably surplus.",
-    notype: "The OSM hydrant has no fire_hydrant:type (pillar, underground...).",
-    nocolour: "The OSM hydrant has no colour.",
-    noposition: "The OSM hydrant has no fire_hydrant:position (green, sidewalk...).",
-    osm_only: "No City hydrant nearby. Probably private (the City layer is " +
-      "municipal only): worth a look, not a fix.",
+    missing: "Nothing in OSM here. Add it once you have seen it.",
+    far: "The nearest OSM board or advertising is some metres off. Check " +
+      "which point is right.",
+    duplicate: "Two OSM features for one City point. One may be surplus " +
+      "(or a column mapped once per face).",
+    osm_only: "No City point nearby. Probably a private board (the City's " +
+      "lists are its own street furniture): worth a look, not a fix.",
   };
   var map;
   var features = [];
@@ -32,7 +31,7 @@
       return;
     }
     // Canvas, not SVG: there are thousands of markers.
-    map = L.map(el, { preferCanvas: true }).setView([43.5448, -80.2482], 13);
+    map = L.map(el, { preferCanvas: true }).setView([43.6510, -79.3960], 14);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution:
@@ -61,7 +60,7 @@
       f.properties._i = i;
       var c = f.geometry.coordinates;
       f._center = [c[1], c[0]];
-      // "missing" is nearly every City hydrant; smaller, so the rest show.
+      // "missing" is most City points; smaller, so the rest show.
       var m = L.circleMarker(f._center, {
         radius: f.properties.status === "missing" ? 4 : 7,
         color: "#fff",
@@ -87,7 +86,7 @@
   }
 
   // Where to send the user for a feature: the openstreetmap.org view and the
-  // iD editor. Points at the existing OSM hydrant when there is one, else at
+  // iD editor. Points at the existing OSM feature when there is one, else at
   // the City's point.
   function osmTargets(f) {
     var p = f.properties;
@@ -115,26 +114,24 @@
       'title="Open in the iD editor (hotkey: I)">iD</a>';
   }
 
-  // What names the row: the City's hydrant number, else its ArcGIS row.
+  // What names the row: the City's asset ID (shown, never for ref).
   function label(p) {
-    if (p.hydrant_id != null) { return String(p.hydrant_id); }
-    if (p.objectid != null) { return "row " + p.objectid; }
-    return "(OSM)";
+    return p.id != null ? String(p.id) : "(OSM)";
   }
 
   function popupHtml(f) {
     var p = f.properties;
-    var h = "<strong>Hydrant " + esc(label(p)) + "</strong>" +
-      (p.location_id ? " &middot; " + esc(p.location_id) : "") +
+    var h = "<strong>" + esc(KINDS[p.kind] || "OSM feature") + "</strong>" +
+      (p.id ? " &middot; " + esc(p.id) : "") +
+      (p.address ? "<br>" + esc(p.address) : "") +
+      (p.city_status && p.city_status !== "Existing"
+        ? "<br>City status: " + esc(p.city_status) : "") +
       "<br>" + p.status + ": " + esc(ACTIONS[p.status] || "");
-    (p.lacks || []).forEach(function (s) {
-      if (s !== p.status) { h += "<br>also " + s + ": " + esc(ACTIONS[s]); }
-    });
     if (p.distance_m != null) {
       h += "<br>City &harr; OSM: " + p.distance_m + " m";
     }
     if (p.nearest_city_m != null) {
-      h += "<br>Nearest City hydrant: " + p.nearest_city_m + " m";
+      h += "<br>Nearest City point: " + p.nearest_city_m + " m";
     }
     var tags = p.osm_tags || {};
     var have = Object.keys(tags).map(function (k) { return k + "=" + tags[k]; });
@@ -142,47 +139,50 @@
     h += "<br>" + osmPairHtml(f);
     if (p.other_url) {
       h += ' &middot; <a href="' + p.other_url +
-        '" target="_blank" rel="noopener">the other OSM hydrant</a> (' +
+        '" target="_blank" rel="noopener">the other OSM feature</a> (' +
         p.other_distance_m + " m)";
     }
     return h;
   }
 
-  // Every status a row answers to: its own, plus each tag it lacks.
-  function statusesOf(p) {
-    var all = [p.status];
-    (p.lacks || []).forEach(function (s) {
-      if (all.indexOf(s) < 0) { all.push(s); }
-    });
-    return all;
+  // Columns first (the layer's main subject), then by ID; OSM-only rows last.
+  function sortKey(p) {
+    var k = p.kind === "column" ? "0" : (p.kind ? "1" : "2");
+    return k + (p.id || p.osm_url || "");
   }
 
-  function sortKey(p) {
-    if (p.hydrant_id != null) { return p.hydrant_id; }
-    return p.objectid != null ? 1e9 + p.objectid : Infinity;
+  // The second column: the City's address, or what the OSM feature is.
+  function where(p) {
+    if (p.address) { return p.address; }
+    var t = p.osm_tags || {};
+    if (t.advertising) { return "advertising=" + t.advertising; }
+    return t.board_type ? "board_type=" + t.board_type : "";
   }
 
   function buildTable() {
     var tbody = document.querySelector("#gap-table tbody");
     var rows = features.slice().sort(function (a, b) {
-      return sortKey(a.properties) - sortKey(b.properties);
+      var ka = sortKey(a.properties), kb = sortKey(b.properties);
+      return ka < kb ? -1 : (ka > kb ? 1 : 0);
     });
     tbody.innerHTML = rows.map(function (f) {
       var p = f.properties;
-      var statuses = statusesOf(p);
-      var more = statuses.slice(1).map(function (s) {
-        return ' <span class="also status-' + s + '">+' + s + "</span>";
-      }).join("");
       var dist = p.status === "far" || p.status === "duplicate"
         ? p.distance_m : (p.status === "osm_only" ? p.nearest_city_m : null);
-      var search = (label(p) + " " + (p.location_id || "")).toLowerCase();
-      return '<tr data-i="' + p._i + '" data-status="' + statuses.join(" ") +
+      var search = (label(p) + " " + where(p)).toLowerCase();
+      var removed = p.city_status && p.city_status !== "Existing"
+        ? ' <span class="removed">(' + esc(p.city_status.toLowerCase()) + ")</span>"
+        : "";
+      var kind = p.kind ? '<span class="kind ' + p.kind + '" title="' +
+        esc(KINDS[p.kind]) + '"></span>' : "";
+      return '<tr data-i="' + p._i + '" data-status="' + p.status +
+        '" data-kind="' + (p.kind || "osm") +
         '" data-search="' + esc(search) + '">' +
-        '<td class="ref">' + esc(label(p)) + "</td>" +
-        "<td>" + esc(p.location_id || "") + "</td>" +
+        '<td class="ref">' + kind + esc(label(p)) + "</td>" +
+        "<td>" + esc(where(p)) + removed + "</td>" +
         '<td class="status-' + p.status + '">' + p.status +
         (dist != null ? ' <span class="dist">' + dist + "&nbsp;m</span>" : "") +
-        more + "</td>" +
+        "</td>" +
         '<td><span class="osm-links">' + osmPairHtml(f) + "</span></td></tr>";
     }).join("");
 
@@ -193,7 +193,7 @@
     });
   }
 
-  // Select a gap: ring it, join it to its OSM hydrant, fit the map, open its
+  // Select a gap: ring it, join it to its OSM feature, fit the map, open its
   // popup, mark its row.
   function select(i, fromTable) {
     var f = features[i];
@@ -238,6 +238,11 @@
       document.querySelectorAll(".controls input[data-status]"),
       function (b) { boxes[b.dataset.status] = b; }
     );
+    var kinds = {};
+    Array.prototype.forEach.call(
+      document.querySelectorAll(".controls input[data-kind]"),
+      function (b) { kinds[b.dataset.kind] = b; }
+    );
     var filter = document.getElementById("filter");
 
     function statusOn(status) {
@@ -245,12 +250,17 @@
       return b ? b.checked : true;
     }
 
+    function kindOn(kind) {
+      var b = kinds[kind];
+      return b ? b.checked : true;  // OSM-only rows have no City kind
+    }
+
     function apply() {
       var q = filter.value.trim().toLowerCase();
 
       var rows = document.querySelectorAll("#gap-table tbody tr");
       Array.prototype.forEach.call(rows, function (tr) {
-        var hit = tr.dataset.status.split(" ").some(statusOn) &&
+        var hit = statusOn(tr.dataset.status) && kindOn(tr.dataset.kind) &&
           (!q || tr.dataset.search.indexOf(q) > -1);
         tr.style.display = hit ? "" : "none";
         var m = markers[parseInt(tr.dataset.i, 10)];
@@ -259,8 +269,8 @@
       });
     }
 
-    Object.keys(boxes).forEach(function (k) {
-      boxes[k].addEventListener("change", apply);
+    Object.keys(boxes).concat(Object.keys(kinds)).forEach(function (k) {
+      (boxes[k] || kinds[k]).addEventListener("change", apply);
     });
     filter.addEventListener("input", apply);
     apply();

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guelph Hydrants &mdash; OSM Coverage Gaps</title>
+<title>Toronto Poster Columns &mdash; OSM Coverage Gaps</title>
 <link rel="stylesheet" href="../index.css">
 <link rel="stylesheet" href="gaps.css">
 <link rel="stylesheet"
@@ -14,33 +14,36 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
 <script defer src="gaps.js"></script>
-<script data-goatcounter="https://osm-guelph.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://osm-toronto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="app">
 
 <header class="bar">
   <div class="bar-head">
-    <h1>Guelph Hydrants &mdash; OSM coverage gaps</h1>
+    <h1>Toronto Poster Columns &mdash; OSM coverage gaps</h1>
     <a class="back" href="../">&larr; reference layer</a>
     <a class="back" href="history.html">gaps over time &rarr;</a>
   </div>
   <div class="counts">
-    <div class="count missing"><strong>{{MISSING_COUNT}}</strong><span>missing in OSM</span></div>
-    <div class="count far"><strong>{{FAR_COUNT}}</strong><span>{{NEAR_M}}&ndash;{{FAR_M}}&nbsp;m off</span></div>
-    <div class="count duplicate"><strong>{{DUPLICATE_COUNT}}</strong><span>mapped twice</span></div>
-    <div class="count notype"><strong>{{NOTYPE_COUNT}}</strong><span>no type</span></div>
-    <div class="count nocolour"><strong>{{NOCOLOUR_COUNT}}</strong><span>no colour</span></div>
-    <div class="count noposition"><strong>{{NOPOSITION_COUNT}}</strong><span>no position</span></div>
+    <div class="count missing"><strong>{{MISSING_COUNT}}</strong><span>missing in OSM</span>
+      <em>{{COLUMN_MISSING}} columns &middot; {{BOARD_MISSING}} boards</em></div>
+    <div class="count far"><strong>{{FAR_COUNT}}</strong><span>{{NEAR_M}}&ndash;{{FAR_M}}&nbsp;m off</span>
+      <em>{{COLUMN_FAR}} &middot; {{BOARD_FAR}}</em></div>
+    <div class="count duplicate"><strong>{{DUPLICATE_COUNT}}</strong><span>mapped twice</span>
+      <em>{{COLUMN_DUPLICATE}} &middot; {{BOARD_DUPLICATE}}</em></div>
     <div class="count osm_only"><strong>{{OSM_ONLY_COUNT}}</strong><span>OSM only</span></div>
-    <div class="count"><strong>{{MATCHED_COUNT}}</strong><span>matched</span></div>
-    <div class="count"><strong>{{CITY_COUNT}}</strong><span>City hydrants</span></div>
-    <div class="count"><strong>{{OSM_COUNT}}</strong><span>OSM hydrants</span></div>
+    <div class="count"><strong>{{MATCHED_COUNT}}</strong><span>matched</span>
+      <em>{{COLUMN_MATCHED}} &middot; {{BOARD_MATCHED}}</em></div>
+    <div class="count"><strong>{{CITY_COUNT}}</strong><span>City points</span>
+      <em>{{COLUMN_CITY}} columns &middot; {{BOARD_CITY}} boards</em></div>
+    <div class="count"><strong>{{OSM_COUNT}}</strong><span>OSM features</span></div>
     <div class="count meta-count">City data {{DATA_DATE}} &middot; OSM data {{OSM_DATE}} &middot; compared {{BUILD_DATE}}</div>
   </div>
   {{OSM_NOTE}}
   <p class="licence">
     <a href="{{LICENSE_URL}}">{{LICENSE_NOTICE}}</a>
-    Source: <a href="{{DATASET_PAGE}}">Hydrants</a>.
+    Sources: <a href="{{COLUMN_DATASET}}">Poster Structure</a>,
+    <a href="{{BOARD_DATASET}}">Poster Board</a>.
   </p>
 </header>
 
@@ -58,31 +61,32 @@
           <input type="checkbox" data-status="far" checked> Far</label>
         <label><span class="swatch duplicate"></span>
           <input type="checkbox" data-status="duplicate" checked> Duplicate</label>
-        <label><span class="swatch notype"></span>
-          <input type="checkbox" data-status="notype" checked> No type</label>
-        <label><span class="swatch nocolour"></span>
-          <input type="checkbox" data-status="nocolour" checked> No colour</label>
-        <label><span class="swatch noposition"></span>
-          <input type="checkbox" data-status="noposition" checked> No position</label>
         <label><span class="swatch osm_only"></span>
           <input type="checkbox" data-status="osm_only" checked> OSM only</label>
-        <input type="search" id="filter" placeholder="Filter by hydrant or location ID...">
+        <span class="kinds">
+          <label><input type="checkbox" data-kind="column" checked> Columns</label>
+          <label><input type="checkbox" data-kind="shelter_board" checked> Shelter boards</label>
+        </span>
+        <input type="search" id="filter" placeholder="Filter by ID, address or street...">
       </div>
       <p class="hint">
-        Red dots are the City's hydrants (raster layer); coloured markers flag
-        the gaps. Click a row to zoom to it &mdash; where OSM has a hydrant for
-        it, a dashed line joins the City point to the OSM one &mdash; then press
+        Orange dots are the City's poster columns and blue ones its shelter
+        boards (raster layer); coloured markers flag the gaps. Click a row to
+        zoom to it &mdash; where OSM has a feature for it, a dashed line joins
+        the City point to the OSM one &mdash; then press
         <kbd>O</kbd> to open it on openstreetmap.org or <kbd>I</kbd> in the iD
         editor (each row has the same <strong>OSM&nbsp;&middot;&nbsp;iD</strong>
-        link pair). Matching is by distance alone, nearest pair first &mdash;
+        link pair). Matching is by distance alone, nearest pair first, and any
+        <code>advertising=*</code> or information/notice board counts &mdash;
         verify by survey or street-level imagery before editing OSM, and do not
-        copy the City's IDs into <code>ref</code>.
+        copy the City's IDs into <code>ref</code>. Whether the public may post
+        on shelter boards is unconfirmed.
       </p>
     </div>
     <div class="table-scroll">
       <table id="gap-table">
         <thead>
-          <tr><th>Hydrant</th><th class="col-name">Location ID</th>
+          <tr><th>City ID</th><th class="col-name">Address</th>
               <th>Status</th><th>OSM &middot; iD</th></tr>
         </thead>
         <tbody></tbody>

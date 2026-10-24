@@ -1,16 +1,16 @@
 // Gap history page: a four-series line chart of the recorded compare runs,
 // drawn as inline SVG from the rows embedded in the page. Same colours as the
-// gap map's markers. "Missing" (~3,400) is left to the table: on one axis it
+// gap map's markers. "Missing" (~2,200) is left to the table: on one axis it
 // would flatten everything else, and "matched" is the same progress the
-// right way up -- every hydrant mapped moves it.
+// right way up -- every column mapped moves it.
 
 (function () {
   "use strict";
 
   var SERIES = [
     { key: "matched", label: "Mapped in OSM (matched)", short: "matched", color: "#7048e8" },
-    { key: "noposition", label: "No position tag", short: "no position", color: "#1c7ed6" },
-    { key: "notype", label: "No type tag", short: "no type", color: "#2b8a3e" },
+    { key: "far", label: "10-30 m off (far)", short: "far", color: "#c92a2a" },
+    { key: "duplicate", label: "Mapped twice", short: "duplicate", color: "#d6336c" },
     { key: "osm_only", label: "OSM only", short: "OSM only", color: "#495057" },
   ];
   var W = 860, H = 320;

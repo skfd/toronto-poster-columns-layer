@@ -33,12 +33,10 @@ body.app { margin: 0; display: flex; flex-direction: column; }
 }
 .count strong { font-size: 1.15rem; margin-right: .35rem; }
 .count span { color: var(--muted); font-size: .82rem; }
+.count em { display: block; color: var(--muted); font-size: .75rem; font-style: normal; margin-top: .15rem; }
 .count.missing { border-left: 4px solid #7048e8; }
 .count.far { border-left: 4px solid #c92a2a; }
 .count.duplicate { border-left: 4px solid #d6336c; }
-.count.notype { border-left: 4px solid #2b8a3e; }
-.count.nocolour { border-left: 4px solid #e8590c; }
-.count.noposition { border-left: 4px solid #1c7ed6; }
 .count.osm_only { border-left: 4px solid #495057; }
 .count.meta-count {
   display: flex;
@@ -107,9 +105,6 @@ body.app { margin: 0; display: flex; flex-direction: column; }
 .swatch.missing { background: #7048e8; }
 .swatch.far { background: #c92a2a; }
 .swatch.duplicate { background: #d6336c; }
-.swatch.notype { background: #2b8a3e; }
-.swatch.nocolour { background: #e8590c; }
-.swatch.noposition { background: #1c7ed6; }
 .swatch.osm_only { background: #495057; }
 
 /* --- data table --- */
@@ -129,16 +124,17 @@ body.app { margin: 0; display: flex; flex-direction: column; }
 #gap-table .status-missing { color: #5f3dc4; font-weight: 600; }
 #gap-table .status-far { color: #c92a2a; font-weight: 600; }
 #gap-table .status-duplicate { color: #c2255c; font-weight: 600; }
-#gap-table .status-notype { color: #2b8a3e; font-weight: 600; }
-#gap-table .status-nocolour { color: #c2410c; font-weight: 600; }
-#gap-table .status-noposition { color: #1864ab; font-weight: 600; }
 #gap-table .status-osm_only { color: #495057; font-weight: 600; }
-#gap-table .also { font-size: .85em; }
 #gap-table .ref { font-variant-numeric: tabular-nums; font-weight: 600; }
 #gap-table .dist { color: var(--muted); font-weight: 400; font-size: .85em; }
 #gap-table .osm-blank { color: var(--muted); }
 #gap-table .osm-name { display: block; color: var(--muted); font-size: .85em; }
 #gap-table .osm-links { white-space: nowrap; }
+#gap-table .kind { display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; margin-right: .35rem; }
+#gap-table .kind.column { background: #e8590c; }
+#gap-table .kind.shelter_board { background: #1c7ed6; }
+#gap-table .removed { color: var(--muted); font-size: .85em; }
+.kinds { display: inline-flex; gap: .6rem; }
 
 .hint kbd {
   display: inline-block;

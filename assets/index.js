@@ -1,4 +1,4 @@
-// Guelph Hydrants landing page: preview map + copy buttons.
+// Toronto Poster Columns landing page: preview map + copy buttons.
 
 (function () {
   "use strict";
@@ -10,7 +10,7 @@
     }
 
     var map = L.map(el, { minZoom: 11, maxZoom: 19 }).setView(
-      [43.5448, -80.2482], 16
+      [43.6510, -79.3960], 16
     );
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
