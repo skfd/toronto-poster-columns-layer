@@ -102,6 +102,9 @@ def fetch_all(fetch=None):
                 f"trusting it."
             )
         ids = [(r.get("properties") or {}).get(config.ID_KEY) for r in rows]
+        if None in ids:
+            raise RuntimeError(f"{package} has a row with no {config.ID_KEY} -- "
+                               f"not the file expected.")
         if len(set(ids)) != len(ids):
             raise RuntimeError(f"{package} repeats an {config.ID_KEY} -- not trusting it.")
         for r in rows:
