@@ -187,16 +187,18 @@
       var dist = p.status === "far" || p.status === "duplicate"
         ? p.distance_m : (p.status === "osm_only" ? p.nearest_city_m : null);
       var search = (label(p) + " " + where(p)).toLowerCase();
-      var removed = p.city_status && p.city_status !== "Existing"
-        ? ' <span class="removed">(' + esc(p.city_status.toLowerCase()) + ")</span>"
-        : "";
-      var kind = p.kind ? '<span class="kind ' + p.kind + '" title="' +
-        esc(KINDS[p.kind]) + '"></span>' : "";
+      // Hollow, as on the raster layer, when the City lists it as removed;
+      // the popup says so in words.
+      var removed = p.city_status && p.city_status !== "Existing";
+      var kind = p.kind ? '<span class="kind ' + p.kind +
+        (removed ? " removed" : "") + '" title="' + esc(KINDS[p.kind]) +
+        (removed ? " (" + esc(p.city_status.toLowerCase()) + ")" : "") +
+        '"></span>' : "";
       return '<tr data-i="' + p._i + '" data-status="' + p.status +
         '" data-kind="' + (p.kind || "osm") +
         '" data-search="' + esc(search) + '">' +
         '<td class="ref">' + kind + esc(label(p)) + "</td>" +
-        "<td>" + esc(where(p)) + removed + "</td>" +
+        "<td>" + esc(where(p)) + "</td>" +
         '<td class="status-' + p.status + '">' + p.status +
         (dist != null ? ' <span class="dist">' + dist + "&nbsp;m</span>" : "") +
         "</td>" +

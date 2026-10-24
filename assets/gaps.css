@@ -133,7 +133,8 @@ body.app { margin: 0; display: flex; flex-direction: column; }
 #gap-table .kind { display: inline-block; width: .6rem; height: .6rem; border-radius: 50%; margin-right: .35rem; }
 #gap-table .kind.column { background: #e8590c; }
 #gap-table .kind.shelter_board { background: #1c7ed6; border-radius: 0; }
-#gap-table .removed { color: var(--muted); font-size: .85em; }
+#gap-table .kind.removed { background: none; box-shadow: inset 0 0 0 2px #e8590c; }
+#gap-table .kind.shelter_board.removed { box-shadow: inset 0 0 0 2px #1c7ed6; }
 .kinds { display: inline-flex; gap: .6rem; }
 
 .hint kbd {
