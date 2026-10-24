@@ -17,7 +17,6 @@
       var r = this._renderer;
       if (!r._drawing || this._empty()) { return; }
       var p = this._point, s = this._radius, ctx = r._ctx;
-      r._drawnLayers[this._leaflet_id] = this;
       ctx.beginPath();
       ctx.rect(p.x - s, p.y - s, 2 * s, 2 * s);
       r._fillStroke(ctx, this);
