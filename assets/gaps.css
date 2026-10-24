@@ -125,7 +125,7 @@ body.app { margin: 0; display: flex; flex-direction: column; }
 #gap-table .status-far { color: #c92a2a; font-weight: 600; }
 #gap-table .status-duplicate { color: #c2255c; font-weight: 600; }
 #gap-table .status-osm_only { color: #495057; font-weight: 600; }
-#gap-table .ref { font-variant-numeric: tabular-nums; font-weight: 600; }
+#gap-table .ref { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
 #gap-table .dist { color: var(--muted); font-weight: 400; font-size: .85em; }
 #gap-table .osm-blank { color: var(--muted); }
 #gap-table .osm-name { display: block; color: var(--muted); font-size: .85em; }

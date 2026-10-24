@@ -8,6 +8,21 @@
     osm_only: "#495057",
   };
   var KINDS = { column: "Poster column", shelter_board: "Shelter poster board" };
+
+  // A circle marker drawn as a square, for shelter boards: the same shapes as
+  // the raster layer (round column, flat board). Canvas renderer only, which
+  // is what this page uses; clicks still hit-test as the circle it extends.
+  var SquareMarker = L.CircleMarker.extend({
+    _updatePath: function () {
+      var r = this._renderer;
+      if (!r._drawing || this._empty()) { return; }
+      var p = this._point, s = this._radius, ctx = r._ctx;
+      r._drawnLayers[this._leaflet_id] = this;
+      ctx.beginPath();
+      ctx.rect(p.x - s, p.y - s, 2 * s, 2 * s);
+      r._fillStroke(ctx, this);
+    },
+  });
   // What a mapper does about each status; shown in the popup.
   var ACTIONS = {
     missing: "Nothing in OSM here. Add it once you have seen it.",
@@ -61,7 +76,9 @@
       var c = f.geometry.coordinates;
       f._center = [c[1], c[0]];
       // "missing" is most City points; smaller, so the rest show.
-      var m = L.circleMarker(f._center, {
+      var Marker = f.properties.kind === "shelter_board"
+        ? SquareMarker : L.CircleMarker;
+      var m = new Marker(f._center, {
         radius: f.properties.status === "missing" ? 4 : 7,
         color: "#fff",
         weight: 2,
