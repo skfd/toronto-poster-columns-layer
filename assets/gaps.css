@@ -117,7 +117,10 @@ body.app { margin: 0; display: flex; flex-direction: column; }
   background: var(--code-bg);
   border-top: 0;
 }
-#gap-table td { padding: .45rem .7rem; }
+#gap-table td { padding: .45rem .7rem; white-space: nowrap; }
+/* One line per row: a long address is cut, and its tooltip has the rest.
+   max-width 0 + width 100% makes this the column that gives way. */
+#gap-table td.addr { max-width: 0; width: 100%; overflow: hidden; text-overflow: ellipsis; }
 #gap-table tbody tr { cursor: pointer; }
 #gap-table tbody tr:hover { background: #f0f8f3; }
 #gap-table tbody tr.selected { background: #e6f4ec; }

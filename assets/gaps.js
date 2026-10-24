@@ -198,7 +198,7 @@
         '" data-kind="' + (p.kind || "osm") +
         '" data-search="' + esc(search) + '">' +
         '<td class="ref">' + kind + esc(label(p)) + "</td>" +
-        "<td>" + esc(where(p)) + "</td>" +
+        '<td class="addr" title="' + esc(where(p)) + '">' + esc(where(p)) + "</td>" +
         '<td class="status-' + p.status + '">' + p.status +
         (dist != null ? ' <span class="dist">' + dist + "&nbsp;m</span>" : "") +
         "</td>" +
