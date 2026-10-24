@@ -1,19 +1,22 @@
-"""Download the Guelph Hydrants GeoJSON from the City's ArcGIS service.
+"""Download the City of Toronto's two postering datasets from CKAN.
 
-The bus stops sibling's download step, with one structural difference: this
-layer does not fit in one reply. The service caps a query at maxRecordCount
-(1,000) and the layer holds ~3,500 hydrants, so the rows are fetched in pages
-ordered by OBJECTID and assembled into one FeatureCollection. The service is
-asked for its count first, and the assembled rows must add up to it -- a page
-lost to a hiccup would otherwise report a few hundred hydrants as missing from
-OSM, and look exactly like a good run.
+The hydrants sibling's download step, reshaped by the source: this layer is two
+CKAN packages, not one ArcGIS layer, and CKAN serves static files. Each package
+is asked for its resource list (``package_show``) and the WGS84 GeoJSON is
+picked out by name -- the resource ids are not hard-coded, so a republish that
+mints new ones does not break the download. Both files are fetched, every
+feature is stamped with its ``kind`` (``column`` or ``shelter_board``), and the
+two are merged into one FeatureCollection.
 
-An ArcGIS FeatureServer `/query` is generated per request, so it has no
-Last-Modified worth caching on. What is compared is a **sha256 of the
-assembled FeatureCollection**. Identical hash means the City has not touched
-the layer, and the existing dated file is kept -- which also keeps DATA_DATE
-meaning "when the City data last changed" rather than "when the build last
-ran".
+Each file is checked against its floor (config.SOURCES) before the merge. A
+file that falls short would report the missing rows to mappers as nothing --
+quietly, and looking exactly like a good run -- so the run stops instead.
+
+What is compared between runs is a **sha256 of the merged FeatureCollection**.
+Identical hash means the City has not touched either dataset, and the existing
+dated file is kept. The file is dated by the newer of the two resources'
+``last_modified``, so DATA_DATE means "when the City last published" rather
+than "when the build last ran".
 
 Every request is gated on a usable link first (``addressvault.net``, the same
 gate the address vault pulls behind). The weekly trigger is what makes that
@@ -31,14 +34,14 @@ from addressvault import net
 
 from src import config
 
-# Four pages of ~250 KB -- a retry costs a couple of seconds when the link is
+# Two files of ~1 MB -- a retry costs a couple of seconds when the link is
 # healthy and buys back a week when it is not.
 RETRIES = 3
 RETRY_WAIT = 30
 
 
 def download(force=False):
-    """Download the latest Hydrants GeoJSON.
+    """Download and merge the latest postering GeoJSONs.
 
     Returns (status, filepath) where status is "DOWNLOADED" or "SKIPPED".
     Raises ``net.LinkUnavailable`` when the host has no usable link: nothing was
@@ -52,8 +55,7 @@ def download(force=False):
     # a wait would be killed mid-sleep -- retrying is the scheduler's job.
     net.wait_for_link(wait=False)
 
-    print("Querying the Hydrants FeatureServer ...")
-    features = fetch_all()
+    features, published = fetch_all()
     body = json.dumps({"type": "FeatureCollection", "features": features},
                       separators=(",", ":")).encode("utf-8")
     digest = hashlib.sha256(body).hexdigest()
@@ -65,10 +67,7 @@ def download(force=False):
             print("Unchanged since the last download.")
             return "SKIPPED", existing
 
-    # No server-side edit date exists on this service (the layer has no
-    # editingInfo and no last_edited_date field), so the file is dated by the
-    # day the change was first seen here.
-    filename = f"hydrants-{date.today().isoformat()}.geojson"
+    filename = f"posters-{published or date.today().isoformat()}.geojson"
     filepath = os.path.join(config.DATA_DIR, filename)
     with open(filepath, "wb") as f:
         f.write(body)
@@ -79,40 +78,57 @@ def download(force=False):
 
 
 def fetch_all(fetch=None):
-    """Every feature in the layer, page by page; raises on a short extract."""
+    """(features, published) for every source; raises on a short file.
+
+    ``published`` is the newest resource last_modified (YYYY-MM-DD), or None.
+    """
     fetch = fetch or _fetch
-    expected = _count(fetch(_url(returnCountOnly="true", f="json")))
-    print(f"  the service reports {expected:,} rows")
     features = []
-    while True:
-        page = _check_page(fetch(_url(
-            outFields="*", outSR="4326", f="geojson", orderByFields="OBJECTID",
-            resultOffset=str(len(features)),
-            resultRecordCount=str(config.PAGE_SIZE),
-        )))
-        features.extend(page["features"])
-        more = (page.get("properties") or {}).get("exceededTransferLimit") \
-            or page.get("exceededTransferLimit")
-        if not more or not page["features"]:
-            break
-    print(f"  {len(features):,} features")
-    if len(features) != expected:
+    dates = []
+    for kind, (package, floor) in config.SOURCES.items():
+        resource = _resource(_parse(fetch(
+            f"{config.CKAN_API}/package_show?id={package}")), package)
+        print(f"Fetching {resource['name']} ...")
+        doc = _parse(fetch(resource["url"]))
+        rows = doc.get("features") if doc.get("type") == "FeatureCollection" else None
+        if rows is None:
+            raise RuntimeError(f"{package}: expected a FeatureCollection, "
+                               f"got {doc.get('type')!r}")
+        print(f"  {len(rows):,} {kind} features")
+        if len(rows) < floor:
+            raise RuntimeError(
+                f"{package} has {len(rows):,} features, under the floor of "
+                f"{floor:,}. The file is partial or the wrong one -- not "
+                f"trusting it."
+            )
+        ids = [(r.get("properties") or {}).get(config.ID_KEY) for r in rows]
+        if len(set(ids)) != len(ids):
+            raise RuntimeError(f"{package} repeats an {config.ID_KEY} -- not trusting it.")
+        for r in rows:
+            r["properties"] = {**(r.get("properties") or {}), "kind": kind}
+        features.extend(rows)
+        if resource.get("last_modified"):
+            dates.append(resource["last_modified"][:10])
+    return features, max(dates) if dates else None
+
+
+def _resource(doc, package):
+    """The package's WGS84 GeoJSON resource.
+
+    Matched on the name, not the format: the package's "datastore dump" is
+    listed with format GeoJSON too, and it is not this file.
+    """
+    resources = (doc.get("result") or {}).get("resources") or []
+    hits = [r for r in resources
+            if (r.get("name") or "").endswith(config.RESOURCE_SUFFIX)
+            and not r.get("datastore_active")]
+    if len(hits) != 1:
+        names = ", ".join(r.get("name") or "?" for r in resources)
         raise RuntimeError(
-            f"Paged {len(features):,} features but the service counts "
-            f"{expected:,}. The extract is partial or the layer changed "
-            f"mid-download -- not trusting it."
+            f"{package}: expected one resource named '*{config.RESOURCE_SUFFIX}', "
+            f"found {len(hits)} among: {names}"
         )
-    ids = [(f.get("properties") or {}).get(config.OBJECT_ID_KEY) for f in features]
-    if len(set(ids)) != len(ids):
-        raise RuntimeError("A page repeated rows (duplicate OBJECTID) -- not trusting it.")
-    if not features:
-        raise RuntimeError("The service returned no hydrants.")
-    return features
-
-
-def _url(**params):
-    query = "&".join(f"{k}={v}" for k, v in {"where": "1%3D1", **params}.items())
-    return f"{config.QUERY_URL}?{query}"
+    return hits[0]
 
 
 def _fetch(url):
@@ -133,35 +149,19 @@ def _fetch(url):
                 # logging a build error against a service never reached at all.
                 net.wait_for_link(wait=False)
                 raise
-            print(f"  query failed ({e}); retrying in {RETRY_WAIT}s")
+            print(f"  request failed ({e}); retrying in {RETRY_WAIT}s")
             time.sleep(RETRY_WAIT)
 
 
 def _parse(body):
-    """JSON, or a RuntimeError. An ArcGIS service answers an error with HTTP
-    200 and a JSON body carrying an ``error`` object, so raise_for_status
-    proves nothing."""
+    """JSON, or a RuntimeError. CKAN answers a failed action with a JSON body
+    whose ``success`` is false, so a 200 is not the whole story."""
     try:
         doc = json.loads(body)
     except ValueError as e:
-        raise RuntimeError(f"The service did not return JSON: {e}")
-    if "error" in doc:
-        raise RuntimeError(f"The service returned an error: {doc['error']}")
-    return doc
-
-
-def _count(body):
-    doc = _parse(body)
-    if not isinstance(doc.get("count"), int):
-        raise RuntimeError(f"Expected a row count, got {doc!r:.200}")
-    return doc["count"]
-
-
-def _check_page(body):
-    doc = _parse(body)
-    if doc.get("type") != "FeatureCollection":
-        raise RuntimeError(f"Expected a FeatureCollection, got {doc.get('type')!r}")
-    doc["features"] = doc.get("features") or []
+        raise RuntimeError(f"The City's server did not return JSON: {e}")
+    if doc.get("success") is False:
+        raise RuntimeError(f"CKAN returned an error: {doc.get('error')}")
     return doc
 
 

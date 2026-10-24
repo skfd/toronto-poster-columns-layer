@@ -1,4 +1,4 @@
-"""CLI entry point for the Guelph hydrants tile layer build."""
+"""CLI entry point for the Toronto poster columns tile layer build."""
 
 import argparse
 import os
@@ -57,7 +57,7 @@ def cmd_compare(args):
 def cmd_backfill(args):
     _banner("Backfill gap history")
     if not os.path.isfile(config.SLIM_PATH):
-        raise RuntimeError("No slim hydrants file. Run 'download' and 'slim' first.")
+        raise RuntimeError("No slim posters file. Run 'download' and 'slim' first.")
     until = date.fromisoformat(args.until) if args.until else date.today()
     added = backfill(date.fromisoformat(args.since), until, args.every, args.pause)
     print(f"Added {added} row(s) to {config.HISTORY_PATH}")
@@ -121,22 +121,22 @@ def cmd_update(args):
 
 
 def _latest_geojson():
-    """Return the newest downloaded Hydrants GeoJSON in data/."""
+    """Return the newest downloaded postering GeoJSON in data/."""
     if not os.path.isdir(config.DATA_DIR):
         raise RuntimeError("No data/ directory. Run 'download' first.")
     files = sorted(
         f for f in os.listdir(config.DATA_DIR)
-        if f.startswith("hydrants-") and f.endswith(".geojson")
+        if f.startswith("posters-") and f.endswith(".geojson")
     )
     if not files:
-        raise RuntimeError("No Hydrants GeoJSON in data/. Run 'download' first.")
+        raise RuntimeError("No postering GeoJSON in data/. Run 'download' first.")
     return os.path.join(config.DATA_DIR, files[-1])
 
 
 COMMANDS = {
-    "download": (cmd_download, "Download the latest Hydrants GeoJSON"),
-    "slim": (cmd_slim, "Slim the hydrants into GeoJSONL"),
-    "compare": (cmd_compare, "Compare City hydrants against OSM -> gaps.geojson"),
+    "download": (cmd_download, "Download the City's two postering GeoJSONs"),
+    "slim": (cmd_slim, "Slim the postering spots into GeoJSONL"),
+    "compare": (cmd_compare, "Compare City points against OSM -> gaps.geojson"),
     "backfill": (cmd_backfill, "Reconstruct past gap counts from OSM history"),
     "vector": (cmd_vector, "Build vector (MVT) tiles via WSL tippecanoe"),
     "raster": (cmd_raster, "Build raster (PNG) tiles"),
@@ -149,7 +149,7 @@ COMMANDS = {
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Guelph Hydrants Tile Layer builder"
+        description="Toronto Poster Columns Tile Layer builder"
     )
     sub = parser.add_subparsers(dest="command")
     for name, (_, help_text) in COMMANDS.items():

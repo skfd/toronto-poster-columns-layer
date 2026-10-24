@@ -1,13 +1,16 @@
-"""Render hydrant points into raster (PNG) map tiles using Pillow.
+"""Render the postering spots into raster (PNG) map tiles using Pillow.
 
 Pure Python -- no native dependencies, runs the same on Windows and Linux.
 
-Each hydrant is a small red dot with a white edge, so it reads over imagery
-and over OSM's own map. There are no labels: the City's hydrant numbers are
-not painted on the hydrants and do not belong in OSM, so a label would only be
-something to copy that should not be copied. The dot grows with the zoom, and
-at z17 -- the zoom a mapper edits at, overzoomed beyond -- it is big enough to
-place a node on.
+One dot per City point, coloured by ``kind``: orange for a poster column, blue
+for a board on a transit shelter. Each dot has a white edge, so it reads over
+imagery and over OSM's own map. A point the City lists as "Temporarily
+Removed" is drawn as a ring rather than a dot: the City says it belongs there,
+but a mapper standing at the spot may well find nothing. There are no labels:
+the City's asset numbers are not on the structures and do not belong in OSM,
+so a label would only be something to copy that should not be copied. The dot
+grows with the zoom, and at z17 -- the zoom a mapper edits at, overzoomed
+beyond -- it is big enough to place a node on.
 """
 
 import json
@@ -19,11 +22,18 @@ from PIL import Image, ImageDraw
 from src import config
 from src.tilemath import TILE_SIZE, lonlat_to_pixel
 
-DOT_COLOR = (211, 47, 47, 255)         # red, a hydrant's colour in most legends
+KIND_COLORS = {
+    "column": (232, 89, 12, 255),          # orange
+    "shelter_board": (28, 126, 214, 255),  # blue
+}
 EDGE_COLOR = (255, 255, 255, 255)
+# Columns are drawn last, on top: they are the layer's main subject, and a
+# column and a shelter a few metres apart should not hide the column.
+DRAW_ORDER = ("shelter_board", "column")
+REMOVED = "Temporarily Removed"
 
 # Dot radius per zoom, in pixels (white edge included).
-DOT_RADIUS = {15: 2, 16: 3, 17: 4}
+DOT_RADIUS = {15: 2, 16: 3, 17: 5}
 
 
 def build_raster(slim_path=None):
@@ -38,12 +48,13 @@ def build_raster(slim_path=None):
 def _render_zoom(slim_path, zoom):
     points = _read_points(slim_path, zoom)
     radius = DOT_RADIUS.get(zoom, DOT_RADIUS[max(DOT_RADIUS)])
-    print(f"Raster z{zoom}: {len(points):,} hydrants")
+    print(f"Raster z{zoom}: {len(points):,} points")
 
     tiles = defaultdict(list)
-    for x, y in points:
+    for p in points:
+        x, y = p[0], p[1]
         for key in _tiles_touching((x - radius, y - radius, x + radius, y + radius)):
-            tiles[key].append((x, y))
+            tiles[key].append(p)
 
     out_dir = os.path.join(config.RASTER_TILE_DIR, str(zoom))
     made_dirs = set()
@@ -62,12 +73,18 @@ def _render_zoom(slim_path, zoom):
 
 
 def _read_points(slim_path, zoom):
-    """[(x, y), ...] in global pixels at ``zoom``."""
+    """[(x, y, kind, removed), ...] in global pixels at ``zoom``, in draw order."""
     points = []
     with open(slim_path, encoding="utf-8") as f:
         for line in f:
-            lon, lat = json.loads(line)["geometry"]["coordinates"][:2]
-            points.append(lonlat_to_pixel(lon, lat, zoom))
+            feat = json.loads(line)
+            props = feat.get("properties") or {}
+            lon, lat = feat["geometry"]["coordinates"][:2]
+            x, y = lonlat_to_pixel(lon, lat, zoom)
+            points.append((x, y, props.get("kind"),
+                           props.get("city_status") == REMOVED))
+    order = {k: i for i, k in enumerate(DRAW_ORDER)}
+    points.sort(key=lambda p: order.get(p[2], -1))
     return points
 
 
@@ -82,8 +99,15 @@ def _render_tile(tx, ty, points, radius):
     img = Image.new("RGBA", (TILE_SIZE, TILE_SIZE), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
     ox, oy = tx * TILE_SIZE, ty * TILE_SIZE
-    for x, y in points:
+    for x, y, kind, removed in points:
         x, y = x - ox, y - oy
-        draw.ellipse((x - radius, y - radius, x + radius, y + radius),
-                     fill=DOT_COLOR, outline=EDGE_COLOR, width=1)
+        color = KIND_COLORS.get(kind, KIND_COLORS["column"])
+        box = (x - radius, y - radius, x + radius, y + radius)
+        if removed:
+            # A ring: white halo, then the colour, hollow in the middle.
+            draw.ellipse(box, fill=None, outline=EDGE_COLOR, width=1)
+            inner = (box[0] + 1, box[1] + 1, box[2] - 1, box[3] - 1)
+            draw.ellipse(inner, fill=None, outline=color, width=max(1, radius // 2))
+        else:
+            draw.ellipse(box, fill=color, outline=EDGE_COLOR, width=1)
     return img

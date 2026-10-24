@@ -20,10 +20,11 @@ def build_site():
     """Render index.html, copy assets and screenshots into build/site/."""
     os.makedirs(config.SITE_DIR, exist_ok=True)
 
-    hydrant_count = "3,500+"
+    point_count = "2,400+"
     if os.path.isfile(config.COUNT_PATH):
         with open(config.COUNT_PATH, encoding="utf-8") as f:
-            hydrant_count = f"{int(f.read().strip()):,}"
+            point_count = f"{int(f.read().strip()):,}"
+    kind_counts = _kind_counts()
 
     build_date = date.today().isoformat()
 
@@ -43,9 +44,12 @@ def build_site():
         ),
         "{{BUILD_DATE}}": build_date,
         "{{DATA_DATE}}": _data_date(build_date),
-        "{{HYDRANT_COUNT}}": hydrant_count,
+        "{{POINT_COUNT}}": point_count,
+        "{{COLUMN_COUNT}}": kind_counts.get("column", "830+"),
+        "{{BOARD_COUNT}}": kind_counts.get("shelter_board", "1,600+"),
         "{{GITHUB_REPO}}": config.GITHUB_REPO,
-        "{{DATASET_PAGE}}": config.DATASET_PAGE,
+        "{{COLUMN_DATASET}}": config.DATASET_PAGES["column"],
+        "{{BOARD_DATASET}}": config.DATASET_PAGES["shelter_board"],
         "{{LICENSE_URL}}": config.LICENSE_URL,
         "{{LICENSE_NOTICE}}": config.LICENSE_NOTICE,
     }
@@ -94,8 +98,9 @@ def _build_gaps_page(build_date):
         "{{DATA_DATE}}": _data_date(build_date),
         **{f"{{{{{k.upper()}_COUNT}}}}": f"{summary.get(k, 0):,}"
            for k in compare.STATUSES},
+        **_by_kind_keys(summary),
         "{{CITY_COUNT}}": f"{summary.get('city', 0):,}",
-        "{{OSM_COUNT}}": f"{summary.get('osm_hydrants', 0):,}",
+        "{{OSM_COUNT}}": f"{summary.get('osm_features', 0):,}",
         "{{MATCHED_COUNT}}": f"{summary.get('matched', 0):,}",
         "{{NEAR_M}}": str(config.NEAR_M),
         "{{FAR_M}}": str(config.FAR_M),
@@ -109,7 +114,8 @@ def _build_gaps_page(build_date):
         # attached to that, not a footer nicety.
         "{{LICENSE_URL}}": config.LICENSE_URL,
         "{{LICENSE_NOTICE}}": config.LICENSE_NOTICE,
-        "{{DATASET_PAGE}}": config.DATASET_PAGE,
+        "{{COLUMN_DATASET}}": config.DATASET_PAGES["column"],
+        "{{BOARD_DATASET}}": config.DATASET_PAGES["shelter_board"],
     }
     for key, value in replacements.items():
         html = html.replace(key, value)
@@ -143,7 +149,7 @@ def _build_history_page(gaps_dir, build_date):
         "{{FIRST_DATE}}": rows[0]["date"] if rows else build_date,
         "{{HISTORY_JSON}}": json.dumps(rows),
         "{{HISTORY_ROWS}}": "\n".join(_history_row(r) for r in reversed(rows)),
-        # Only counts, but counts of the City's hydrants, and like the gap page
+        # Only counts, but counts of the City's points, and like the gap page
         # this can be the one page a reader opens: it carries the notice too.
         "{{LICENSE_URL}}": config.LICENSE_URL,
         "{{LICENSE_NOTICE}}": config.LICENSE_NOTICE,
@@ -170,7 +176,7 @@ def _osm_note(summary):
 
     The gap list is only worth acting on if both sides are fresh, and the OSM
     side is the one that moves daily. A page dated today whose OSM data is two
-    weeks old sends a mapper to add a hydrant somebody else already added.
+    weeks old sends a mapper to add a board somebody else already added.
     """
     if not summary.get("osm_stale"):
         return ""
@@ -180,6 +186,28 @@ def _osm_note(summary):
         f'these gaps were computed against OSM data from <strong>{when}</strong>. '
         'Anything mapped since then still shows as a gap.</p>'
     )
+
+
+def _kind_counts():
+    """{kind: "1,234"} from the slim file, for the landing page."""
+    counts = {}
+    if os.path.isfile(config.SLIM_PATH):
+        with open(config.SLIM_PATH, encoding="utf-8") as f:
+            for line in f:
+                kind = json.loads(line)["properties"].get("kind")
+                counts[kind] = counts.get(kind, 0) + 1
+    return {k: f"{n:,}" for k, n in counts.items()}
+
+
+def _by_kind_keys(summary):
+    """{{COLUMN_MISSING}}-style placeholders: each kind's share of a count."""
+    prefixes = {"column": "COLUMN", "shelter_board": "BOARD"}
+    out = {}
+    for kind, prefix in prefixes.items():
+        row = (summary.get("by_kind") or {}).get(kind) or {}
+        for key in ("city", "missing", "far", "duplicate", "matched"):
+            out[f"{{{{{prefix}_{key.upper()}}}}}"] = f"{row.get(key, 0):,}"
+    return out
 
 
 def _data_date(fallback):

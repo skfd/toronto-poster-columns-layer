@@ -12,7 +12,7 @@ from src import config
 
 # tile-join writes thousands of small files; doing that on the WSL filesystem
 # and copying the tree out afterwards is far faster than writing onto /mnt/c.
-WSL_PBF_DIR = "/tmp/guelph-hydrants-vector-tiles"
+WSL_PBF_DIR = "/tmp/toronto-poster-columns-vector-tiles"
 
 
 def build_vector(slim_path=None):
@@ -29,12 +29,12 @@ def build_vector(slim_path=None):
     mbtiles_wsl = win_to_wsl(config.MBTILES_PATH)
 
     # -r1: tippecanoe thins points at low zooms by default, which for a
-    # reference layer means a hydrant that is simply not there at z12-z14.
+    # reference layer means a column that is simply not there at z12-z14.
     tippecanoe = (
         f"tippecanoe -o '{mbtiles_wsl}' "
         f"-Z{config.VECTOR_MINZOOM} -z{config.VECTOR_MAXZOOM} -r1 "
         f"--no-tile-size-limit --no-feature-limit "
-        f"-l {config.VECTOR_LAYER_NAME} -n 'Guelph Hydrants' "
+        f"-l {config.VECTOR_LAYER_NAME} -n 'Toronto Poster Columns' "
         f"-A '{config.ATTRIBUTION}' --force '{slim_wsl}'"
     )
     print("Running tippecanoe ...")

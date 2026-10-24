@@ -1,13 +1,14 @@
-"""Filter the Hydrants GeoJSON into a slim newline-delimited GeoJSON.
+"""Filter the merged postering GeoJSON into a slim newline-delimited GeoJSON.
 
-The source file is a ~800 KB GeoJSON FeatureCollection; it is parsed as a
+The source file is a ~1.3 MB GeoJSON FeatureCollection; it is parsed as a
 stream with ijson for consistency with the sibling projects. Every point is
-kept, one compact Feature per line, in data/hydrants-slim.geojsonl -- the input
+kept, one compact Feature per line, in data/posters-slim.geojsonl -- the input
 to both tile builders and to the gap tool.
 
-There is no key to check here, unlike the bus stops: nothing is matched on an
-ID, only on position, so a row with no HYDRANTID (7 on 2026-10-09) is still a
-hydrant. There is no status filter either -- the layer has no status field.
+The City stores each point as a one-point MultiPoint; it is written out as a
+Point. There is no status filter: a "Temporarily Removed" column is still a
+City postering spot (94 columns and 28 shelter boards on 2026-10-24), and the
+status travels with it so the tiles and the gap page can say so.
 """
 
 import json
@@ -17,17 +18,20 @@ import ijson
 
 from src import config
 
-# Sanity bounds for the slimmed feature count (3,537 hydrants on 2026-10-09).
-MIN_EXPECTED = 3000
-MAX_EXPECTED = 4500
+# Sanity bounds for the slimmed feature count (2,496 points on 2026-10-24).
+# The per-dataset floors in config.SOURCES are the finer check; this one
+# catches a merge gone wrong.
+MIN_EXPECTED = 2250
+MAX_EXPECTED = 3500
 
 
 def slim(src_path):
-    """Stream the GeoJSON into data/hydrants-slim.geojsonl.
+    """Stream the GeoJSON into data/posters-slim.geojsonl.
 
-    Keeps Point features, with `hydrant_id`, `location_id`, `model` and
-    `objectid` properties where the City has them. Returns the slim file path.
-    Raises if the feature count is implausible.
+    Keeps point features, with ``kind``, ``id``, ``site_id``, ``asset_type``,
+    ``city_status``, ``address``, ``fronting`` and ``from_street`` properties
+    where the City has them. Returns the slim file path. Raises if the feature
+    count is implausible.
     """
     print(f"Slimming {src_path} ...")
     os.makedirs(config.DATA_DIR, exist_ok=True)
@@ -38,31 +42,31 @@ def slim(src_path):
             open(config.SLIM_PATH, "w", encoding="utf-8") as out:
         for feature in ijson.items(src, "features.item"):
             props_in = feature.get("properties") or {}
-            geom = feature.get("geometry") or {}
-            if geom.get("type") != "Point" or not geom.get("coordinates"):
+            point = _point(feature.get("geometry") or {})
+            kind = props_in.get("kind")
+            if point is None or kind not in config.STATUS_KEYS:
                 skipped += 1
                 continue
 
-            props_out = {}
-            hydrant_id = props_in.get(config.HYDRANT_ID_KEY)
-            if hydrant_id is not None:
-                props_out["hydrant_id"] = int(hydrant_id)
-            for key, name in ((config.LOCATION_ID_KEY, "location_id"),
-                              (config.MODEL_KEY, "model")):
-                value = str(props_in.get(key) or "").strip()
+            props_out = {"kind": kind}
+            for key, name in ((config.ID_KEY, "id"),
+                              (config.SITE_ID_KEY, "site_id"),
+                              (config.ASSET_TYPE_KEY, "asset_type"),
+                              (config.STATUS_KEYS[kind], "city_status"),
+                              (config.FRONTING_KEY, "fronting"),
+                              (config.FROM_KEY, "from_street")):
+                value = _text(props_in.get(key))
                 if value:
                     props_out[name] = value
-            # The ArcGIS row id. It can renumber when the layer is republished,
-            # so nothing keys on it; it names the row for a reviewer when the
-            # City left HYDRANTID blank.
-            objectid = props_in.get(config.OBJECT_ID_KEY)
-            if objectid is not None:
-                props_out["objectid"] = int(objectid)
+            address = " ".join(v for v in (_text(props_in.get(k))
+                                           for k in config.ADDRESS_KEYS) if v)
+            if address:
+                props_out["address"] = address
 
-            lon, lat = geom["coordinates"][:2]
+            lon, lat = point
             out.write(json.dumps({
                 "type": "Feature",
-                # ~0.1 m. The service hands back 14 decimal places.
+                # ~0.1 m. The City hands back 12 decimal places.
                 "geometry": {"type": "Point",
                              "coordinates": [round(float(lon), 6),
                                              round(float(lat), 6)]},
@@ -80,3 +84,19 @@ def slim(src_path):
             f"{MIN_EXPECTED:,}-{MAX_EXPECTED:,} -- aborting."
         )
     return config.SLIM_PATH
+
+
+def _point(geom):
+    """(lon, lat) of a Point or a one-point MultiPoint, else None."""
+    coords = geom.get("coordinates")
+    if geom.get("type") == "Point" and coords:
+        return coords[:2]
+    if geom.get("type") == "MultiPoint" and coords and len(coords) == 1:
+        return coords[0][:2]
+    return None
+
+
+def _text(value):
+    """A stripped string, with the City's literal "None" read as blank."""
+    value = str(value if value is not None else "").strip()
+    return "" if value == "None" else value
