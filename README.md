@@ -135,14 +135,16 @@ declares, and a run that fell back to cached OSM says so on the page and exits
 
 ### What a first run looks like
 
-The first live comparison, on 2026-10-24 against OSM as of 05:15Z (1,152
-accepted OSM features, 2,496 City points; City data published 2026-02-20):
+The first live comparison, on 2026-10-24 against OSM as of 05:27Z (1,152
+accepted OSM features, 2,496 City points; City data published 2026-02-20).
+A City point with both a `far` match and a second feature beside it is one
+`duplicate` row, counted once:
 
 | | City | matched | missing | far | duplicate |
 |---|--:|--:|--:|--:|--:|
 | poster columns | 834 | 227 | 570 | 37 | 18 |
-| shelter boards | 1,662 | 12 | 1,620 | 30 | 1 |
-| **all** | **2,496** | **239** | **2,190** | **67** | **19** |
+| shelter boards | 1,662 | 12 | 1,620 | 29 | 1 |
+| **all** | **2,496** | **239** | **2,190** | **66** | **19** |
 
 plus **28 `osm_only`** (17 `advertising=board`, 5 `poster_box`, 2 `column`,
 2 `pillar`, 2 notice boards).
@@ -155,7 +157,7 @@ plus **28 `osm_only`** (17 `advertising=board`, 5 `poster_box`, 2 `column`,
 - **The shelter boards are almost unmapped as boards** (12 matched: 8
   `advertising=board`, one `billboard`, three information boards), though most
   of their shelters are in OSM.
-- **The 67 `far` rows** are 37 columns (21 against `advertising=board`) and 30
+- **The 66 `far` rows** are 37 columns (21 against `advertising=board`) and 29
   shelter boards, 18 of them against an `advertising=billboard` &mdash; the ad
   panel question again.
 - **The duplicates** are mostly a column with two notice-board nodes 1-6 m
