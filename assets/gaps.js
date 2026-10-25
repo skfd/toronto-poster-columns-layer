@@ -8,6 +8,8 @@
     osm_only: "#495057",
   };
   var KINDS = { column: "Poster column", shelter_board: "Shelter poster board" };
+  var JOSM = "http://127.0.0.1:8111/load_and_zoom";
+  var PAD_M = 30;  // JOSM box: this much around the City and OSM points
 
   // A circle marker drawn as a square, for shelter boards: the same shapes as
   // the raster layer (round column, flat board). Canvas renderer only, which
@@ -101,16 +103,19 @@
     wireControls();
   }
 
-  // Where to send the user for a feature: the openstreetmap.org view and the
-  // iD editor. Points at the existing OSM feature when there is one, else at
-  // the City's point.
+  // Where to send the user for a feature: the openstreetmap.org view, the
+  // iD editor, and JOSM remote control (the point(s) padded PAD_M, downloaded).
+  // Points at the existing OSM feature when there is one, else at the City's
+  // point.
   function osmTargets(f) {
     var p = f.properties;
     var m = p.osm_url && p.osm_url.match(/(node|way|relation)\/(\d+)/);
+    var josm = josmUrl(f, m ? m[1] + m[2] : null);
     if (m) {
       return {
         osm: p.osm_url,
         id: "https://www.openstreetmap.org/edit?" + m[1] + "=" + m[2],
+        josm: josm,
       };
     }
     var c = f._center;
@@ -118,16 +123,41 @@
     return {
       osm: "https://www.openstreetmap.org/#map=19/" + ll,
       id: "https://www.openstreetmap.org/edit#map=19/" + ll,
+      josm: josm,
     };
   }
 
-  // "OSM · iD" link pair shared by the table and the popups.
+  // load_and_zoom over the City point and its OSM feature (when there is
+  // one), padded PAD_M, with that OSM object selected.
+  function josmUrl(f, select) {
+    var p = f.properties, c = f._center;
+    var s = c[0], n = c[0], w = c[1], e = c[1];
+    if (p.osm_lat != null && p.osm_lon != null) {
+      s = Math.min(s, p.osm_lat); n = Math.max(n, p.osm_lat);
+      w = Math.min(w, p.osm_lon); e = Math.max(e, p.osm_lon);
+    }
+    var dLat = PAD_M / 111320;
+    var dLon = PAD_M / (111320 * Math.cos((s + n) / 2 * Math.PI / 180));
+    return JOSM + "?left=" + (w - dLon).toFixed(6) +
+      "&right=" + (e + dLon).toFixed(6) + "&top=" + (n + dLat).toFixed(6) +
+      "&bottom=" + (s - dLat).toFixed(6) +
+      (select ? "&select=" + select : "") +
+      "&changeset_source=" + encodeURIComponent("City of Toronto Poster Columns");
+  }
+
+  // "OSM · iD · JOSM" links shared by the table and the popups. JOSM is a
+  // plain navigation in one reused tab named "josm", not a fetch: browsers
+  // gate background requests from a public page to localhost, not a link the
+  // mapper clicks. That tab shows JOSM's "OK", or a connection error when
+  // JOSM or its remote control is off.
   function osmPairHtml(f) {
     var t = osmTargets(f);
     return '<a href="' + t.osm + '" target="_blank" rel="noopener" ' +
       'title="View on openstreetmap.org (hotkey: O)">OSM</a> &middot; ' +
       '<a href="' + t.id + '" target="_blank" rel="noopener" ' +
-      'title="Open in the iD editor (hotkey: I)">iD</a>';
+      'title="Open in the iD editor (hotkey: I)">iD</a> &middot; ' +
+      '<a href="' + esc(t.josm) + '" class="josm" target="josm" ' +
+      'title="Load this area into JOSM via remote control (hotkey: J)">JOSM</a>';
   }
 
   // What names the row: the City's asset ID (shown, never for ref).
@@ -293,16 +323,20 @@
     filter.addEventListener("input", apply);
     apply();
 
-    // O / I open the selected gap on openstreetmap.org / in the iD editor.
+    // O / I / J open the selected gap on openstreetmap.org, in iD or JOSM.
     document.addEventListener("keydown", function (ev) {
       if (ev.ctrlKey || ev.metaKey || ev.altKey) { return; }
       if (/^(input|textarea|select)$/i.test(ev.target.tagName)) { return; }
       var key = ev.key.toLowerCase();
-      if (key !== "o" && key !== "i") { return; }
+      if (["o", "i", "j"].indexOf(key) < 0) { return; }
       if (selectedIndex == null) { return; }
       var t = osmTargets(features[selectedIndex]);
       ev.preventDefault();
-      window.open(key === "o" ? t.osm : t.id, "_blank", "noopener");
+      if (key === "j") {
+        window.open(t.josm, "josm");
+      } else {
+        window.open(key === "o" ? t.osm : t.id, "_blank", "noopener");
+      }
     });
   }
 

@@ -44,7 +44,9 @@ of the columns than that: see the first run below.)
 - A **landing page** with copy-paste "add this layer" instructions for both
   editors, and the postering-rules caveat below.
 - A **gap-review page** (`/gaps/`) on an interactive map and a filterable
-  table, and its **history page** (`/gaps/history.html`) charting the counts,
+  table (each row and popup links to OSM, iD and JOSM; the JOSM button needs
+  JOSM running with *Preferences &rarr; Remote Control* enabled), and its
+  **history page** (`/gaps/history.html`) charting the counts,
   one point per weekly run.
 
 ## Where you may post: the caveat
