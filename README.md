@@ -195,7 +195,7 @@ and every choice below is meant to be reviewed there.
   existing OSM advertising, information/notice boards and shelters in the
   chunk's box, fetched from Overpass with `out meta`. Not a plain area
   download: a chunk spans kilometres, and the OSM API refuses a bbox over
-  50,000 nodes, which downtown Toronto reaches in a few hundred metres. B1's
+  50,000 nodes. B1's
   context was 1.1 MB, 2,862 nodes and 32 s on 2026-10-25.
 - Chunks are **recut at every weekly build**: imported points drop out of the
   gap list, so next week's `B3` is not this week's. The page says to reopen

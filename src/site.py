@@ -209,7 +209,7 @@ JOSM = "http://127.0.0.1:8111"
 # Existing OSM around a chunk, for its reviewer: what the gap check counts as
 # a postering spot, plus shelters, where a shelter board goes. Only these, not
 # everything: a chunk spans kilometres, and the OSM API refuses a bbox download
-# over 50,000 nodes, which downtown Toronto reaches in a few hundred metres.
+# over 50,000 nodes.
 CONTEXT_QUERY = (
     '[out:xml][timeout:120][bbox:{s},{w},{n},{e}];'
     '(nwr["advertising"];nwr["tourism"="information"]["information"="board"];'
