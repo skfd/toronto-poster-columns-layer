@@ -48,6 +48,9 @@ of the columns than that: see the first run below.)
   JOSM running with *Preferences &rarr; Remote Control* enabled), and its
   **history page** (`/gaps/history.html`) charting the counts,
   one point per weekly run.
+- An **import-chunks page** (`/import/`): the points missing from OSM cut
+  into JOSM-ready chunks, one `.osm` file and one changeset each. See
+  "Import chunks" below.
 
 ## Where you may post: the caveat
 
@@ -167,6 +170,37 @@ plus **28 `osm_only`** (17 `advertising=board`, 5 `poster_box`, 2 `column`,
   apart: perhaps one node per face of the column. A look, not necessarily a
   fix.
 
+## Import chunks
+
+The technical half of an import of the missing points; the paperwork (the
+community discussion, the wiki page, the licence review) is someone else's,
+and every choice below is meant to be reviewed there.
+
+- **What goes in:** `missing` rows the City lists as *Existing*. `far` and
+  `duplicate` rows already have an OSM feature; a *Temporarily Removed* point
+  is one the City says is not on the street.
+- **Chunks** are cut per kind (columns `C1…`, shelter boards `B1…`, so the
+  boards can be left out of the import without touching the columns), at most
+  `IMPORT_MAX_PER_CHUNK` (250) nodes each and as few as that allows: the
+  points are halved along the longer side of their box, near-equally, until
+  every part fits. Each chunk is a compact rectangle that overlaps no other of
+  its kind. On 2026-10-24's gap list: 496 columns in 2 chunks, 1,593 boards
+  in 7, each 6-23 km across.
+- **Node tags** are `IMPORT_TAGS` in `config.py` (`advertising=column` /
+  `advertising=board`, `operator=City of Toronto`), printed on the page. No
+  `ref` and no City ID.
+- **Per chunk, two JOSM links.** *1 load* is remote control's `import` of the
+  chunk's `.osm` into a new layer, with the changeset comment and
+  `IMPORT_CHANGESET_TAGS` set. *2 context* imports, into that same layer, the
+  existing OSM advertising, information/notice boards and shelters in the
+  chunk's box, fetched from Overpass with `out meta`. Not a plain area
+  download: a chunk spans kilometres, and the OSM API refuses a bbox over
+  50,000 nodes, which downtown Toronto reaches in a few hundred metres. B1's
+  context was 1.1 MB, 2,862 nodes and 32 s on 2026-10-25.
+- Chunks are **recut at every weekly build**: imported points drop out of the
+  gap list, so next week's `B3` is not this week's. The page says to reopen
+  it before starting a chunk.
+
 ## Setup
 
 1. Install Python dependencies:
@@ -247,5 +281,7 @@ linked to the licence text. The tile metadata carries
 "(c) City of Toronto, Open Government Licence - Toronto". This is a condition
 of use, not a courtesy: if you fork this, the notice travels with it.
 
-This is not an import: the layer puts the City's points in front of a mapper,
-who adds what they have seen.
+The layer itself is not an import: it puts the City's points in front of a
+mapper, who adds what they have seen. The import-chunks page prepares an
+import of the missing points; the `.osm` files there are City data too, and
+the page carries the notice.

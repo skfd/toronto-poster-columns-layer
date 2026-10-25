@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toronto Poster Columns &mdash; Import Chunks</title>
+<link rel="stylesheet" href="../index.css">
+<link rel="stylesheet" href="../gaps/gaps.css">
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script defer src="import.js"></script>
+<script data-goatcounter="https://osm-toronto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  #gap-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .steps { margin: .6rem 0 0; padding-left: 1.2rem; font-size: .85rem; line-height: 1.45; }
+  .steps li { margin-bottom: .25rem; }
+  .tags { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: .6rem; font-size: .8rem; line-height: 1.5; }
+  .tags strong { display: block; font-size: .85rem; }
+</style>
+</head>
+<body class="app">
+
+<header class="bar">
+  <div class="bar-head">
+    <h1>Toronto Poster Columns &mdash; import chunks</h1>
+    <a class="back" href="../">&larr; reference layer</a>
+    <a class="back" href="../gaps/">&larr; gaps</a>
+  </div>
+  <div class="counts">
+    <div class="count missing"><strong>{{NODE_COUNT}}</strong><span>new nodes</span>
+      <em>{{COLUMN_NODES}} columns &middot; {{BOARD_NODES}} boards</em></div>
+    <div class="count"><strong>{{CHUNK_COUNT}}</strong><span>chunks</span>
+      <em>at most {{MAX_PER_CHUNK}} nodes each</em></div>
+    <div class="count"><strong>{{REMOVED_COUNT}}</strong><span>left out</span>
+      <em>missing, but temporarily removed</em></div>
+    <div class="count meta-count">City data {{DATA_DATE}} &middot; OSM data {{OSM_DATE}} &middot; built {{BUILD_DATE}}</div>
+  </div>
+  {{OSM_NOTE}}
+  <p class="licence">
+    <a href="{{LICENSE_URL}}">{{LICENSE_NOTICE}}</a>
+    Sources: <a href="{{COLUMN_DATASET}}">Poster Structure</a>,
+    <a href="{{BOARD_DATASET}}">Poster Board</a>.
+  </p>
+</header>
+
+<div class="layout">
+  <div id="gap-map" data-geojson="chunks.geojson"></div>
+
+  <aside class="panel">
+    <div class="panel-head">
+      <div class="controls">
+        <span class="kinds">
+          <label><input type="checkbox" data-kind="column" checked> Columns</label>
+          <label><input type="checkbox" data-kind="shelter_board" checked> Shelter boards</label>
+        </span>
+      </div>
+      <p class="hint">
+        The City points with nothing in OSM within {{FAR_M}}&nbsp;m, cut into
+        geographically compact chunks of up to {{MAX_PER_CHUNK}}, one
+        changeset each. Points listed as <em>far</em> or <em>duplicate</em>
+        on the gap page already have an OSM feature and are not here, nor is
+        a missing point the City lists as temporarily removed. Columns and
+        shelter boards are chunked apart, so either can be imported without
+        the other. Chunks are recut from the gap list at every weekly build:
+        reopen this page before starting one. The import's community review
+        is not done here: this page is the technical half only.
+      </p>
+      <ol class="steps">
+        <li>Start JOSM with <em>Preferences &rarr; Remote Control</em> on.</li>
+        <li><strong>1&nbsp;load</strong> opens the chunk as a new layer, with
+            the changeset comment and tags set.</li>
+        <li><strong>2&nbsp;context</strong> adds, to that layer, the existing
+            OSM boards, advertising and shelters in the chunk's box, from
+            Overpass.</li>
+        <li>Check the new nodes against imagery and the validator, then upload.</li>
+      </ol>
+      <div class="tags">
+        <div><strong>Column nodes</strong>{{COLUMN_TAGS}}</div>
+        <div><strong>Shelter board nodes</strong>{{BOARD_TAGS}}</div>
+        <div><strong>Changeset</strong>{{CHANGESET_TAGS}}</div>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table id="gap-table">
+        <thead>
+          <tr><th>Chunk</th><th>Nodes</th><th class="col-name">Extent</th>
+              <th>JOSM</th></tr>
+        </thead>
+        <tbody>
+{{CHUNK_ROWS}}
+        </tbody>
+      </table>
+    </div>
+  </aside>
+</div>
+
+</body>
+</html>

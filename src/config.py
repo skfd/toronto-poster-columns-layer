@@ -181,3 +181,26 @@ ATTIC_URL = "https://overpass-api.de/api/interpreter"
 BACKFILL_SINCE = "2026-06-01"   # a Monday; the parks sibling's start, so the charts line up
 BACKFILL_STEP_DAYS = 7          # the weekly schedule's cadence
 BACKFILL_PAUSE = 30
+
+# --- Import chunks (import page) ---
+# The City points missing from OSM, cut into JOSM-loadable chunks, one
+# changeset each. The import's paperwork (the community discussion, the wiki
+# page, the licence review) is someone else's; what is here is only the
+# technical half, and every choice in it is meant to be reviewed there.
+#
+# A chunk holds at most this many new nodes. Nothing in JOSM or the OSM API
+# comes near it (a changeset takes 10,000 changes); it is how many points a
+# reviewer can check against imagery before uploading in one sitting.
+IMPORT_MAX_PER_CHUNK = 250
+# Node tags per kind. No ref and no City ID, deliberately: see "No ref, on
+# purpose" in the README.
+IMPORT_TAGS = {
+    "column": {"advertising": "column", "operator": "City of Toronto"},
+    "shelter_board": {"advertising": "board", "operator": "City of Toronto"},
+}
+# Changeset tags JOSM is handed with each chunk; the comment is per chunk.
+IMPORT_CHANGESET_TAGS = {
+    "source": "City of Toronto Open Data",
+    "import": "yes",
+}
+IMPORT_COMMENT = "Import City of Toronto {what}, chunk {name} of {total}"
