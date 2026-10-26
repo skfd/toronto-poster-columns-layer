@@ -194,9 +194,12 @@ BACKFILL_PAUSE = 30
 IMPORT_MAX_PER_CHUNK = 250
 # Node tags per kind. No ref and no City ID, deliberately: see "No ref, on
 # purpose" in the README.
+# board_type=notice on both: the City lets anyone post community notices and
+# bars commercial ads, so advertising=* alone reads as the opposite.
+CITY_OPERATOR = {"operator": "City of Toronto", "operator:wikidata": "Q172"}
 IMPORT_TAGS = {
-    "column": {"advertising": "column", "operator": "City of Toronto"},
-    "shelter_board": {"advertising": "board", "operator": "City of Toronto"},
+    "column": {"advertising": "column", "board_type": "notice", **CITY_OPERATOR},
+    "shelter_board": {"advertising": "board", "board_type": "notice", **CITY_OPERATOR},
 }
 # Changeset tags JOSM is handed with each chunk; the comment is per chunk.
 IMPORT_CHANGESET_TAGS = {

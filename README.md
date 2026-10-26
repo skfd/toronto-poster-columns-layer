@@ -187,8 +187,11 @@ and every choice below is meant to be reviewed there.
   its kind. On 2026-10-24's gap list: 496 columns in 2 chunks, 1,593 boards
   in 7, each 6-23 km across.
 - **Node tags** are `IMPORT_TAGS` in `config.py` (`advertising=column` /
-  `advertising=board`, `operator=City of Toronto`), printed on the page. No
-  `ref` and no City ID.
+  `advertising=board`, `board_type=notice`, `operator=City of Toronto`,
+  `operator:wikidata=Q172`), printed on the page. `board_type=notice` because
+  the City bars commercial ads on them: they are community notice spots. No
+  `ref` and no City ID, and nothing the City data doesn't say (`sides`,
+  `support`, `check_date`).
 - **Per chunk, two JOSM links.** *1 load* is remote control's `import` of the
   chunk's `.osm` into a new layer, with the changeset comment and
   `IMPORT_CHANGESET_TAGS` set. *2 context* imports, into that same layer, the
