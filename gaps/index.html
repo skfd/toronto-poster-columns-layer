@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toronto Poster Columns &mdash; OSM Coverage Gaps</title>
+<link rel="stylesheet" href="../index.css">
+<link rel="stylesheet" href="gaps.css">
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script defer src="gaps.js"></script>
+<script data-goatcounter="https://osm-toronto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="app">
+
+<header class="bar">
+  <div class="bar-head">
+    <h1>Toronto Poster Columns &mdash; OSM coverage gaps</h1>
+    <a class="back" href="../">&larr; reference layer</a>
+    <a class="back" href="history.html">gaps over time &rarr;</a>
+    <a class="back" href="../import/">import chunks &rarr;</a>
+  </div>
+  <div class="counts">
+    <div class="count missing"><strong>2,190</strong><span>missing in OSM</span>
+      <em>570 columns &middot; 1,620 boards</em></div>
+    <div class="count far"><strong>66</strong><span>10&ndash;30&nbsp;m off</span>
+      <em>37 &middot; 29</em></div>
+    <div class="count duplicate"><strong>19</strong><span>mapped twice</span>
+      <em>18 &middot; 1</em></div>
+    <div class="count osm_only"><strong>28</strong><span>OSM only</span></div>
+    <div class="count"><strong>239</strong><span>matched</span>
+      <em>227 &middot; 12</em></div>
+    <div class="count"><strong>2,496</strong><span>City points</span>
+      <em>834 columns &middot; 1,662 boards</em></div>
+    <div class="count"><strong>1,152</strong><span>OSM features</span></div>
+    <div class="count meta-count">City data 2026-02-20 &middot; OSM data 2026-10-29 21:28Z &middot; compared 2026-10-29</div>
+  </div>
+  
+  <p class="licence">
+    <a href="https://open.toronto.ca/open-data-licence/">Contains information licensed under the Open Government Licence – Toronto.</a>
+    Sources: <a href="https://open.toronto.ca/dataset/street-furniture-poster-structure/">Poster Structure</a>,
+    <a href="https://open.toronto.ca/dataset/street-furniture-poster-board/">Poster Board</a>.
+  </p>
+</header>
+
+<div class="layout">
+  <div id="gap-map"
+       data-geojson="gaps.geojson"
+       data-raster="../tiles/raster/{z}/{x}/{y}.png"></div>
+
+  <aside class="panel">
+    <div class="panel-head">
+      <div class="controls">
+        <label><span class="swatch missing"></span>
+          <input type="checkbox" data-status="missing" checked> Missing</label>
+        <label><span class="swatch far"></span>
+          <input type="checkbox" data-status="far" checked> Far</label>
+        <label><span class="swatch duplicate"></span>
+          <input type="checkbox" data-status="duplicate" checked> Duplicate</label>
+        <label><span class="swatch osm_only"></span>
+          <input type="checkbox" data-status="osm_only" checked> OSM only</label>
+        <span class="kinds">
+          <label><input type="checkbox" data-kind="column" checked> Columns</label>
+          <label><input type="checkbox" data-kind="shelter_board" checked> Shelter boards</label>
+        </span>
+        <input type="search" id="filter" placeholder="Filter by ID, address or street...">
+      </div>
+      <p class="hint">
+        Orange circles are the City's poster columns and blue squares its
+        shelter boards (raster layer); markers flag the gaps, coloured by
+        status and in the same shapes; a hollow one in the table is listed by
+        the City as temporarily removed. Click a row to
+        zoom to it &mdash; where OSM has a feature for it, a dashed line joins
+        the City point to the OSM one &mdash; then press
+        <kbd>O</kbd> to open it on openstreetmap.org, <kbd>I</kbd> in the iD
+        editor or <kbd>J</kbd> to load the area into a running JOSM through
+        remote control (each row has the same
+        <strong>OSM&nbsp;&middot;&nbsp;iD&nbsp;&middot;&nbsp;JOSM</strong>
+        links). Matching is by distance alone, nearest pair first, and any
+        <code>advertising=*</code> or information/notice board counts &mdash;
+        verify by survey or street-level imagery before editing OSM, and do not
+        copy the City's IDs into <code>ref</code>. Whether the public may post
+        on shelter boards is unconfirmed.
+      </p>
+    </div>
+    <div class="table-scroll">
+      <table id="gap-table">
+        <thead>
+          <tr><th>City ID</th><th class="col-name">Address</th>
+              <th>Status</th><th>OSM &middot; iD &middot; JOSM</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </aside>
+</div>
+
+</body>
+</html>

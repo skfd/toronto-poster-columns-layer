@@ -1,0 +1,1491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="toronto-poster-columns-layer">
+  <node id="-1" lat="43.6534060" lon="-79.3911380">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-2" lat="43.6493300" lon="-79.3909330">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-3" lat="43.6419000" lon="-79.3908880">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-4" lat="43.6527190" lon="-79.3908480">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-5" lat="43.6498970" lon="-79.3905620">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-6" lat="43.6493200" lon="-79.3901820">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-7" lat="43.6476790" lon="-79.3901190">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-8" lat="43.6572450" lon="-79.3896130">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-9" lat="43.6486170" lon="-79.3889240">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-10" lat="43.7045100" lon="-79.3887660">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-11" lat="43.6483050" lon="-79.3884660">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-12" lat="43.6725840" lon="-79.3884200">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-13" lat="43.6441580" lon="-79.3882500">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-14" lat="43.7038760" lon="-79.3882470">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-15" lat="43.6504210" lon="-79.3881650">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-16" lat="43.6505930" lon="-79.3880380">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-17" lat="43.6455170" lon="-79.3876970">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-18" lat="43.6528700" lon="-79.3871570">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-19" lat="43.6413470" lon="-79.3869530">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-20" lat="43.6484970" lon="-79.3869200">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-21" lat="43.6706070" lon="-79.3868130">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-22" lat="43.6445170" lon="-79.3865670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-23" lat="43.6478760" lon="-79.3863820">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-24" lat="43.7670170" lon="-79.3862890">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-25" lat="43.6634810" lon="-79.3857770">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-26" lat="43.6458640" lon="-79.3855510">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-27" lat="43.6600000" lon="-79.3853920">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-28" lat="43.6461150" lon="-79.3850130">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-29" lat="43.6676790" lon="-79.3847610">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-30" lat="43.6449130" lon="-79.3846970">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-31" lat="43.7481300" lon="-79.3844860">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-32" lat="43.6666940" lon="-79.3843970">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-33" lat="43.7475320" lon="-79.3841980">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-34" lat="43.6657090" lon="-79.3813060">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-35" lat="43.6663220" lon="-79.3810920">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-36" lat="43.6646430" lon="-79.3807810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-37" lat="43.6658770" lon="-79.3805320">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-38" lat="43.6640330" lon="-79.3803700">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-39" lat="43.6595300" lon="-79.3795810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-40" lat="43.7051090" lon="-79.3785340">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-41" lat="43.6530500" lon="-79.3766000">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-42" lat="43.7691990" lon="-79.3760630">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-43" lat="43.6418620" lon="-79.3751380">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-44" lat="43.7053080" lon="-79.3749010">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-45" lat="43.6674480" lon="-79.3746810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-46" lat="43.6689520" lon="-79.3744040">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-47" lat="43.6677620" lon="-79.3719840">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-48" lat="43.7994220" lon="-79.3704290">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-49" lat="43.7970890" lon="-79.3694700">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-50" lat="43.7424900" lon="-79.3690820">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-51" lat="43.6660250" lon="-79.3685780">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-52" lat="43.7063820" lon="-79.3678310">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-53" lat="43.6618440" lon="-79.3673770">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-54" lat="43.7057060" lon="-79.3669480">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-55" lat="43.7712280" lon="-79.3665170">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-56" lat="43.6495670" lon="-79.3647060">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-57" lat="43.6601470" lon="-79.3631990">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-58" lat="43.6529380" lon="-79.3627230">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-59" lat="43.6499390" lon="-79.3619340">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-60" lat="43.6606110" lon="-79.3611370">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-61" lat="43.7847860" lon="-79.3609670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-62" lat="43.8111840" lon="-79.3602440">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-63" lat="43.7530840" lon="-79.3587830">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-64" lat="43.6771110" lon="-79.3586670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-65" lat="43.6529020" lon="-79.3579820">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-66" lat="43.6765090" lon="-79.3578820">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-67" lat="43.8119930" lon="-79.3578350">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-68" lat="43.6531750" lon="-79.3569760">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-69" lat="43.7926950" lon="-79.3553300">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-70" lat="43.7924450" lon="-79.3551860">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-71" lat="43.6534770" lon="-79.3538870">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-72" lat="43.6788010" lon="-79.3497460">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-73" lat="43.7791170" lon="-79.3490850">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-74" lat="43.6720440" lon="-79.3471510">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-75" lat="43.6785760" lon="-79.3471190">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-76" lat="43.7614360" lon="-79.3470020">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-77" lat="43.7752230" lon="-79.3458190">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-78" lat="43.6786210" lon="-79.3446610">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-79" lat="43.6791100" lon="-79.3444560">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-80" lat="43.7368910" lon="-79.3439380">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-81" lat="43.7706780" lon="-79.3438410">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-82" lat="43.6750070" lon="-79.3393400">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-83" lat="43.7872200" lon="-79.3383410">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-84" lat="43.7168610" lon="-79.3376630">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-85" lat="43.8037810" lon="-79.3360110">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-86" lat="43.7181710" lon="-79.3315390">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-87" lat="43.7927770" lon="-79.3310620">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-88" lat="43.7933540" lon="-79.3309630">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-89" lat="43.7894580" lon="-79.3298790">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-90" lat="43.6913440" lon="-79.3269910">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-91" lat="43.6905960" lon="-79.3269180">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-92" lat="43.7637230" lon="-79.3267560">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-93" lat="43.7132430" lon="-79.3267370">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-94" lat="43.6788800" lon="-79.3264670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-95" lat="43.7945290" lon="-79.3257610">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-96" lat="43.7806830" lon="-79.3257430">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-97" lat="43.7594620" lon="-79.3256370">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-98" lat="43.8160990" lon="-79.3243700">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-99" lat="43.7409790" lon="-79.3242740">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-100" lat="43.7407030" lon="-79.3239810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-101" lat="43.7458760" lon="-79.3231670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-102" lat="43.7603150" lon="-79.3221960">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-103" lat="43.6725770" lon="-79.3220150">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-104" lat="43.6778610" lon="-79.3212120">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-105" lat="43.6865240" lon="-79.3209640">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-106" lat="43.6826070" lon="-79.3204870">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-107" lat="43.6754380" lon="-79.3199600">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-108" lat="43.7956270" lon="-79.3196830">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-109" lat="43.8011030" lon="-79.3183570">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-110" lat="43.7255770" lon="-79.3181580">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-111" lat="43.7763300" lon="-79.3180430">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-112" lat="43.7628490" lon="-79.3176810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-113" lat="43.6985090" lon="-79.3162630">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-114" lat="43.7968400" lon="-79.3160860">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-115" lat="43.6970420" lon="-79.3150300">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-116" lat="43.7576620" lon="-79.3149700">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-117" lat="43.7236160" lon="-79.3148990">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-118" lat="43.6624930" lon="-79.3146340">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-119" lat="43.7924220" lon="-79.3141740">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-120" lat="43.6968760" lon="-79.3138480">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-121" lat="43.7360670" lon="-79.3125990">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-122" lat="43.6672730" lon="-79.3112420">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-123" lat="43.6806310" lon="-79.3110270">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-124" lat="43.7419010" lon="-79.3095970">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-125" lat="43.6881530" lon="-79.3094130">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-126" lat="43.7789040" lon="-79.3082690">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-127" lat="43.6683440" lon="-79.3079090">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-128" lat="43.6689140" lon="-79.3053700">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-129" lat="43.6687900" lon="-79.3053270">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-130" lat="43.6876150" lon="-79.3040190">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-131" lat="43.6692390" lon="-79.3032790">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-132" lat="43.6912710" lon="-79.3016830">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-133" lat="43.6879570" lon="-79.3015660">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-134" lat="43.8090240" lon="-79.3006220">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-135" lat="43.6841150" lon="-79.2998810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-136" lat="43.7445450" lon="-79.2994290">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-137" lat="43.6737540" lon="-79.2985940">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-138" lat="43.6702710" lon="-79.2985710">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-139" lat="43.7601260" lon="-79.2983530">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-140" lat="43.7808490" lon="-79.2982850">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-141" lat="43.6969010" lon="-79.2971010">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-142" lat="43.8012960" lon="-79.2970870">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-143" lat="43.7012130" lon="-79.2970220">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-144" lat="43.7090050" lon="-79.2958840">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-145" lat="43.7069740" lon="-79.2950540">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-146" lat="43.7451300" lon="-79.2948040">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-147" lat="43.7856160" lon="-79.2933340">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-148" lat="43.6936540" lon="-79.2914320">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-149" lat="43.6802490" lon="-79.2897310">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-150" lat="43.6835220" lon="-79.2896320">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-151" lat="43.7464980" lon="-79.2888270">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-152" lat="43.6910560" lon="-79.2886810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-153" lat="43.6725830" lon="-79.2882200">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-154" lat="43.7830650" lon="-79.2879320">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-155" lat="43.6804400" lon="-79.2874030">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-156" lat="43.8037920" lon="-79.2867740">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-157" lat="43.8035410" lon="-79.2866070">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-158" lat="43.7473270" lon="-79.2850100">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-159" lat="43.7472460" lon="-79.2849220">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-160" lat="43.6947870" lon="-79.2843100">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-161" lat="43.6807630" lon="-79.2838290">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-162" lat="43.7659300" lon="-79.2813850">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-163" lat="43.7113780" lon="-79.2805150">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-164" lat="43.7661020" lon="-79.2805100">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-165" lat="43.7482230" lon="-79.2804810">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-166" lat="43.8109130" lon="-79.2798130">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-167" lat="43.7854090" lon="-79.2789730">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-168" lat="43.6932790" lon="-79.2786620">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-169" lat="43.7595580" lon="-79.2785910">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-170" lat="43.7571850" lon="-79.2780090">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-171" lat="43.8242380" lon="-79.2778050">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-172" lat="43.7296920" lon="-79.2776720">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-173" lat="43.8264860" lon="-79.2775020">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-174" lat="43.7880100" lon="-79.2763030">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-175" lat="43.7492960" lon="-79.2753090">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-176" lat="43.6945460" lon="-79.2732680">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-177" lat="43.7678070" lon="-79.2724440">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-178" lat="43.7419810" lon="-79.2718400">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-179" lat="43.6872980" lon="-79.2714620">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-180" lat="43.6877280" lon="-79.2711680">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-181" lat="43.7682400" lon="-79.2710370">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-182" lat="43.6879570" lon="-79.2704850">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-183" lat="43.7873840" lon="-79.2688680">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-184" lat="43.7949410" lon="-79.2685670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-185" lat="43.8081940" lon="-79.2667770">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-186" lat="43.8082990" lon="-79.2663580">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-187" lat="43.7692390" lon="-79.2645770">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-188" lat="43.8090580" lon="-79.2629960">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-189" lat="43.6936050" lon="-79.2624630">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-190" lat="43.7335430" lon="-79.2609790">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-191" lat="43.7897490" lon="-79.2591290">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-192" lat="43.7895760" lon="-79.2584330">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-193" lat="43.7596400" lon="-79.2572830">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-194" lat="43.8101660" lon="-79.2572540">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-195" lat="43.7721170" lon="-79.2571800">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-196" lat="43.7247810" lon="-79.2537580">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-197" lat="43.7277640" lon="-79.2523700">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-198" lat="43.8361500" lon="-79.2513850">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-199" lat="43.7184620" lon="-79.2513610">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-200" lat="43.7073930" lon="-79.2503850">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-201" lat="43.7099400" lon="-79.2492210">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-202" lat="43.7100360" lon="-79.2487290">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-203" lat="43.7367490" lon="-79.2485040">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-204" lat="43.7811990" lon="-79.2468530">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-205" lat="43.7850160" lon="-79.2466090">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-206" lat="43.8204360" lon="-79.2464940">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-207" lat="43.8129590" lon="-79.2426530">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-208" lat="43.7741130" lon="-79.2415040">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-209" lat="43.7566190" lon="-79.2398000">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-210" lat="43.7936360" lon="-79.2391960">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-211" lat="43.7940800" lon="-79.2385970">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-212" lat="43.7753320" lon="-79.2363670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-213" lat="43.7578050" lon="-79.2355930">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-214" lat="43.7576650" lon="-79.2349310">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-215" lat="43.7945150" lon="-79.2347560">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-216" lat="43.7581040" lon="-79.2328090">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-217" lat="43.7794150" lon="-79.2327120">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-218" lat="43.7255500" lon="-79.2322120">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-219" lat="43.7767160" lon="-79.2320440">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-220" lat="43.7404950" lon="-79.2317850">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-221" lat="43.7767240" lon="-79.2311450">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-222" lat="43.7462740" lon="-79.2311010">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-223" lat="43.8299860" lon="-79.2309370">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-224" lat="43.8035900" lon="-79.2304590">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-225" lat="43.7598110" lon="-79.2259860">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-226" lat="43.8167660" lon="-79.2245920">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-227" lat="43.7577560" lon="-79.2242540">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-228" lat="43.8017790" lon="-79.2204790">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-229" lat="43.8235140" lon="-79.2188840">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-230" lat="43.7434780" lon="-79.2188750">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-231" lat="43.7795080" lon="-79.2175150">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-232" lat="43.7395080" lon="-79.2171730">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-233" lat="43.8079530" lon="-79.2155860">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-234" lat="43.7621220" lon="-79.2155000">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-235" lat="43.7773240" lon="-79.2111080">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-236" lat="43.8162630" lon="-79.2108190">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-237" lat="43.7493980" lon="-79.2064670">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-238" lat="43.8020510" lon="-79.2001380">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-239" lat="43.7472670" lon="-79.1992880">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-240" lat="43.7893950" lon="-79.1942820">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-241" lat="43.7855840" lon="-79.1931550">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-242" lat="43.7864560" lon="-79.1883750">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-243" lat="43.7686340" lon="-79.1859230">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-244" lat="43.7692600" lon="-79.1820040">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-245" lat="43.7700880" lon="-79.1783260">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-246" lat="43.7689600" lon="-79.1757330">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-247" lat="43.7784430" lon="-79.1411750">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+  <node id="-248" lat="43.7790350" lon="-79.1397270">
+    <tag k="advertising" v="column"/>
+    <tag k="board_type" v="notice"/>
+    <tag k="operator" v="City of Toronto"/>
+    <tag k="operator:wikidata" v="Q172"/>
+  </node>
+</osm>

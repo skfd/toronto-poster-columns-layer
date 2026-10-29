@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toronto Poster Columns &mdash; Import Chunks</title>
+<link rel="stylesheet" href="../index.css">
+<link rel="stylesheet" href="../gaps/gaps.css">
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script defer src="import.js"></script>
+<script data-goatcounter="https://osm-toronto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  #gap-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .steps { margin: .6rem 0 0; padding-left: 1.2rem; font-size: .85rem; line-height: 1.45; }
+  .steps li { margin-bottom: .25rem; }
+  .tags { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: .6rem; font-size: .8rem; line-height: 1.5; }
+  .tags strong { display: block; font-size: .85rem; }
+</style>
+</head>
+<body class="app">
+
+<header class="bar">
+  <div class="bar-head">
+    <h1>Toronto Poster Columns &mdash; import chunks</h1>
+    <a class="back" href="../">&larr; reference layer</a>
+    <a class="back" href="../gaps/">&larr; gaps</a>
+  </div>
+  <div class="counts">
+    <div class="count missing"><strong>2,089</strong><span>new nodes</span>
+      <em>496 columns &middot; 1,593 boards</em></div>
+    <div class="count"><strong>9</strong><span>chunks</span>
+      <em>at most 250 nodes each</em></div>
+    <div class="count"><strong>101</strong><span>left out</span>
+      <em>missing, but temporarily removed</em></div>
+    <div class="count meta-count">City data 2026-02-20 &middot; OSM data 2026-10-29 21:28Z &middot; built 2026-10-29</div>
+  </div>
+  
+  <p class="licence">
+    <a href="https://open.toronto.ca/open-data-licence/">Contains information licensed under the Open Government Licence – Toronto.</a>
+    Sources: <a href="https://open.toronto.ca/dataset/street-furniture-poster-structure/">Poster Structure</a>,
+    <a href="https://open.toronto.ca/dataset/street-furniture-poster-board/">Poster Board</a>.
+  </p>
+</header>
+
+<div class="layout">
+  <div id="gap-map" data-geojson="chunks.geojson"></div>
+
+  <aside class="panel">
+    <div class="panel-head">
+      <div class="controls">
+        <span class="kinds">
+          <label><input type="checkbox" data-kind="column" checked> Columns</label>
+          <label><input type="checkbox" data-kind="shelter_board" checked> Shelter boards</label>
+        </span>
+      </div>
+      <p class="hint">
+        The City points with nothing in OSM within 30&nbsp;m, cut into
+        geographically compact chunks of up to 250, one
+        changeset each. Points listed as <em>far</em> or <em>duplicate</em>
+        on the gap page already have an OSM feature and are not here, nor is
+        a missing point the City lists as temporarily removed. Columns and
+        shelter boards are chunked apart, so either can be imported without
+        the other. Chunks are recut from the gap list at every weekly build:
+        reopen this page before starting one. The import's community review
+        is not done here: this page is the technical half only.
+      </p>
+      <ol class="steps">
+        <li>Start JOSM with <em>Preferences &rarr; Remote Control</em> on.</li>
+        <li><strong>1&nbsp;load</strong> opens the chunk as a new layer, with
+            the changeset comment and tags set.</li>
+        <li><strong>2&nbsp;context</strong> adds, to that layer, the existing
+            OSM boards, advertising and shelters in the chunk's box, from
+            Overpass.</li>
+        <li>Check the new nodes against imagery and the validator, then upload.</li>
+      </ol>
+      <div class="tags">
+        <div><strong>Column nodes</strong><code>advertising=column</code><br><code>board_type=notice</code><br><code>operator=City of Toronto</code><br><code>operator:wikidata=Q172</code><br></div>
+        <div><strong>Shelter board nodes</strong><code>advertising=board</code><br><code>board_type=notice</code><br><code>operator=City of Toronto</code><br><code>operator:wikidata=Q172</code><br></div>
+        <div><strong>Changeset</strong><code>comment=Import City of Toronto poster columns, chunk C1 of N</code><br><code>source=City of Toronto Open Data</code><br><code>import=yes</code><br></div>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table id="gap-table">
+        <thead>
+          <tr><th>Chunk</th><th>Nodes</th><th class="col-name">Extent</th>
+              <th>JOSM</th></tr>
+        </thead>
+        <tbody>
+<tr data-chunk="C1" data-kind="column"><td class="ref"><span class="kind column"></span>C1</td><td class="num">248</td><td class="num">18.5&nbsp;&times;&nbsp;22.6&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20C1&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20poster%20columns%2C%20chunk%20C1%20of%202%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-c1.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.594860%252C-79.620516%252C43.798355%252C-79.390873%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-c1.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="C2" data-kind="column"><td class="ref"><span class="kind column"></span>C2</td><td class="num">248</td><td class="num">20.3&nbsp;&times;&nbsp;21.7&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20C2&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20poster%20columns%2C%20chunk%20C2%20of%202%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-c2.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.641078%252C-79.391510%252C43.836419%252C-79.139355%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-c2.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="B1" data-kind="shelter_board"><td class="ref"><span class="kind shelter_board"></span>B1</td><td class="num">228</td><td class="num">14.7&nbsp;&times;&nbsp;10.0&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20B1&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20shelter%20poster%20boards%2C%20chunk%20B1%20of%207%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-b1.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.595597%252C-79.586156%252C43.686388%252C-79.403395%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-b1.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="B2" data-kind="shelter_board"><td class="ref"><span class="kind shelter_board"></span>B2</td><td class="num">228</td><td class="num">10.6&nbsp;&times;&nbsp;10.0&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20B2&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20shelter%20poster%20boards%2C%20chunk%20B2%20of%207%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-b2.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.686308%252C-79.635027%252C43.776865%252C-79.502657%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-b2.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="B3" data-kind="shelter_board"><td class="ref"><span class="kind shelter_board"></span>B3</td><td class="num">227</td><td class="num">8.0&nbsp;&times;&nbsp;12.5&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20B3&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20shelter%20poster%20boards%2C%20chunk%20B3%20of%207%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-b3.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.686742%252C-79.502724%252C43.799197%252C-79.403196%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-b3.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="B4" data-kind="shelter_board"><td class="ref"><span class="kind shelter_board"></span>B4</td><td class="num">228</td><td class="num">6.2&nbsp;&times;&nbsp;14.5&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20B4&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20shelter%20poster%20boards%2C%20chunk%20B4%20of%207%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-b4.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.636568%252C-79.403932%252C43.766922%252C-79.326774%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-b4.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="B5" data-kind="shelter_board"><td class="ref"><span class="kind shelter_board"></span>B5</td><td class="num">227</td><td class="num">12.9&nbsp;&times;&nbsp;10.6&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20B5&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20shelter%20poster%20boards%2C%20chunk%20B5%20of%207%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-b5.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.671438%252C-79.327284%252C43.767473%252C-79.166813%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-b5.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="B6" data-kind="shelter_board"><td class="ref"><span class="kind shelter_board"></span>B6</td><td class="num">228</td><td class="num">10.4&nbsp;&times;&nbsp;7.1&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20B6&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20shelter%20poster%20boards%2C%20chunk%20B6%20of%207%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-b6.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.767222%252C-79.394129%252C43.831092%252C-79.264574%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-b6.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+<tr data-chunk="B7" data-kind="shelter_board"><td class="ref"><span class="kind shelter_board"></span>B7</td><td class="num">227</td><td class="num">11.2&nbsp;&times;&nbsp;8.1&nbsp;km</td><td class="osm-links"><a href="http://127.0.0.1:8111/import?new_layer=true&amp;layer_name=Toronto%20posters%20B7&amp;changeset_tags=comment%3DImport%20City%20of%20Toronto%20shelter%20poster%20boards%2C%20chunk%20B7%20of%207%7Csource%3DCity%20of%20Toronto%20Open%20Data%7Cimport%3Dyes&amp;url=https%3A%2F%2Fskfd.github.io%2Ftoronto-poster-columns-layer%2Fimport%2Fchunk-b7.osm" class="josm" target="josm" title="Load the chunk into a new JOSM layer, changeset tags set">1&nbsp;load</a> &middot; <a href="http://127.0.0.1:8111/import?new_layer=false&amp;url=https%3A%2F%2Foverpass-api.de%2Fapi%2Finterpreter%3Fdata%3D%255Bout%253Axml%255D%255Btimeout%253A120%255D%255Bbbox%253A43.767416%252C-79.265210%252C43.840391%252C-79.124750%255D%253B%2528nwr%255B%2522advertising%2522%255D%253Bnwr%255B%2522tourism%2522%253D%2522information%2522%255D%255B%2522information%2522%253D%2522board%2522%255D%253Bnwr%255B%2522board_type%2522%253D%2522notice%2522%255D%253Bnwr%255B%2522amenity%2522%253D%2522shelter%2522%255D%253Bnwr%255B%2522shelter%2522%253D%2522yes%2522%255D%253B%2529%253Bout%2520meta%253B%253E%253Bout%2520meta%2520qt%253B" class="josm" target="josm" title="Add existing OSM boards, advertising and shelters around it, from Overpass">2&nbsp;context</a> &middot; <a href="chunk-b7.osm" download title="The chunk as an .osm file">.osm</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </aside>
+</div>
+
+</body>
+</html>
