@@ -34,6 +34,7 @@ import math
 import time
 
 import requests
+from layerkit.geom import dist as _dist
 from layerkit import overpass
 # Raised by overpass.load_osm; callers and tests name it as compare's.
 from layerkit.overpass import OsmUnavailable  # noqa: F401
@@ -381,10 +382,3 @@ def _write_gaps(gaps):
 
 
 # --- Geometry ---------------------------------------------------------------
-
-def _dist(a, b):
-    """Metres between two {lat, lon}; equirectangular, fine at city scale."""
-    lat0 = math.radians((a["lat"] + b["lat"]) / 2)
-    dx = math.radians(b["lon"] - a["lon"]) * math.cos(lat0)
-    dy = math.radians(b["lat"] - a["lat"])
-    return 6371008.8 * math.hypot(dx, dy)
