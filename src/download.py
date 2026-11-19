@@ -26,11 +26,11 @@ worth doing: a run lost to a dead link is not retried for a week.
 import hashlib
 import json
 import os
-import time
 from datetime import date
 
-import requests
+import requests  # noqa: F401 -- the tests patch requests.get here
 from addressvault import net
+from layerkit import citydata
 
 from src import config
 
@@ -135,25 +135,9 @@ def _resource(doc, package):
 
 
 def _fetch(url):
-    """GET ``url``, retrying a dropped connection. Returns the raw body."""
-    for attempt in range(RETRIES + 1):
-        try:
-            resp = requests.get(
-                url,
-                headers={"User-Agent": config.USER_AGENT},
-                timeout=600,
-            )
-            resp.raise_for_status()
-            return resp.content
-        except requests.RequestException as e:
-            if attempt == RETRIES:
-                # Out of retries. If the link itself is down then this was never
-                # a City failure -- say so, and the run exits 75 instead of
-                # logging a build error against a service never reached at all.
-                net.wait_for_link(wait=False)
-                raise
-            print(f"  request failed ({e}); retrying in {RETRY_WAIT}s")
-            time.sleep(RETRY_WAIT)
+    """GET ``url``, retrying a failed request. Returns the raw body."""
+    return citydata.get(url, user_agent=config.USER_AGENT,
+                        retries=RETRIES, wait=RETRY_WAIT)
 
 
 def _parse(body):
