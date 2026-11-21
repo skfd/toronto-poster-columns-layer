@@ -66,8 +66,8 @@ ATTRIBUTION = "(c) City of Toronto, Open Government Licence - Toronto"
 # the site is built as f"{PAGES_URL}/tiles/...", and a trailing slash would
 # emit "...//tiles/...", which is the one thing on the page a reader copies
 # verbatim into their editor.
-GITHUB_REPO = "skfd/toronto-poster-columns-layer"
-PAGES_URL = "https://skfd.github.io/toronto-poster-columns-layer"
+GITHUB_REPO = "toronto-maps/toronto-poster-columns-layer"
+PAGES_URL = "https://toronto-maps.github.io/toronto-poster-columns-layer"
 
 # WSL distro that has tippecanoe installed (see wsl-setup.md).
 WSL_DISTRO = "Ubuntu"

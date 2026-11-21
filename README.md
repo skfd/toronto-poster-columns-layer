@@ -9,7 +9,7 @@ OpenStreetMap mappers can add to the **JOSM** and **iD** editors as a reference
 overlay, plus a gap page listing where OSM disagrees with the City. These are
 Toronto's community postering spots: the places you can pin a flyer.
 
-**Live layer and how to add it: https://skfd.github.io/toronto-poster-columns-layer/**
+**Live layer and how to add it: https://toronto-maps.github.io/toronto-poster-columns-layer/**
 
 It is a clone of [guelph-hydrants-layer](https://github.com/guelph-maps/guelph-hydrants-layer)
 ([live](https://guelph-maps.github.io/guelph-hydrants-layer/)): the same
@@ -212,7 +212,7 @@ and every choice below is meant to be reviewed there.
    ```
 2. Set up WSL2 + tippecanoe once &mdash; see [wsl-setup.md](wsl-setup.md).
 3. GitHub Pages serves the `gh-pages` branch (root); it was switched on with
-   `gh api -X POST repos/skfd/toronto-poster-columns-layer/pages`.
+   `gh api -X POST repos/toronto-maps/toronto-poster-columns-layer/pages`.
 
 ## Usage
 
@@ -236,8 +236,8 @@ an orphan `gh-pages` branch, recreated on every build so history never grows.
 ## Tile endpoints
 
 ```
-https://skfd.github.io/toronto-poster-columns-layer/tiles/vector/{z}/{x}/{y}.pbf   (z12-19)
-https://skfd.github.io/toronto-poster-columns-layer/tiles/raster/{z}/{x}/{y}.png   (z15-17)
+https://toronto-maps.github.io/toronto-poster-columns-layer/tiles/vector/{z}/{x}/{y}.pbf   (z12-19)
+https://toronto-maps.github.io/toronto-poster-columns-layer/tiles/raster/{z}/{x}/{y}.png   (z15-17)
 ```
 
 The vector layer name is `posters`. tippecanoe runs with `-r1`, so no point is
